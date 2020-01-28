@@ -6,6 +6,7 @@ This is the repository of the labs for the Intro to Docker developerWorks course
 - lab1 - [Run your first container](lab1.md)
 - lab2 - [Add value with custom images](lab2.md)
 
+<sub>
 © Copyright IBM Corporation 2017
 
 IBM, the IBM logo and ibm.com are trademarks of International Business Machines Corp., registered in many jurisdictions worldwide. Other product and service names might be trademarks of IBM or other companies. A current list of IBM trademarks is available on the Web at &quot;Copyright and trademark information&quot; at www.ibm.com/legal/copytrade.shtml.
