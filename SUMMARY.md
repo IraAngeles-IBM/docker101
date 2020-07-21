@@ -2,7 +2,7 @@
 
 ## docker101 lab
 
-* [Install Docker](lab0.md)
+* [Install Docker](lab0/lab0.md)
 * [Run your first container](lab1/lab1.md)
     * [Step 1: Run your first container](lab1/step1.md)
     * [Step 2: Run Multiple Containers](lab1/step2.md)

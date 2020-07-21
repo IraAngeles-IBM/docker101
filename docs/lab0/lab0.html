@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Step 2: Clean Up · GitBook</title>
+        <title>Install Docker · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../lab2/lab2.html" />
+    <link rel="next" href="../lab1/lab1.html" />
     
     
-    <link rel="prev" href="step2.html" />
+    <link rel="prev" href="../" />
     
 
     </head>
@@ -104,9 +104,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../lab0/lab0.html">
+        <li class="chapter active" data-level="1.2" data-path="lab0.html">
             
-                <a href="../lab0/lab0.html">
+                <a href="lab0.html">
             
                     
                     Install Docker
@@ -117,9 +117,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="lab1.html">
+        <li class="chapter " data-level="1.3" data-path="../lab1/lab1.html">
             
-                <a href="lab1.html">
+                <a href="../lab1/lab1.html">
             
                     
                     Run your first container
@@ -131,9 +131,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="step1.html">
+        <li class="chapter " data-level="1.3.1" data-path="../lab1/step1.html">
             
-                <a href="step1.html">
+                <a href="../lab1/step1.html">
             
                     
                     Step 1: Run your first container
@@ -144,9 +144,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="step2.html">
+        <li class="chapter " data-level="1.3.2" data-path="../lab1/step2.html">
             
-                <a href="step2.html">
+                <a href="../lab1/step2.html">
             
                     
                     Step 2: Run Multiple Containers
@@ -157,9 +157,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.3" data-path="step3.html">
+        <li class="chapter " data-level="1.3.3" data-path="../lab1/step3.html">
             
-                <a href="step3.html">
+                <a href="../lab1/step3.html">
             
                     
                     Step 2: Clean Up
@@ -276,7 +276,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Step 2: Clean Up</a>
+        <a href=".." >Install Docker</a>
     </h1>
 </div>
 
@@ -291,55 +291,29 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="lab-1---running-your-first-container">Lab 1 - Running Your First Container</h1>
-<h2 id="step-3-clean-up">Step 3: Clean Up</h2>
-<p>Completing this lab results in a bunch of running containers on your host. Let&apos;s clean these up.</p>
+                                <h1 id="lab-0---install-docker">Lab 0 - Install Docker</h1>
+<h2 id="overview">Overview</h2>
+<p>In this lab, you will install docker. We will be using docker throughout the rest of the labs.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>None</p>
+<h2 id="step-1-install-docker">Step 1: Install Docker</h2>
 <ol>
-<li><p>First get a list of the containers running using <code>docker container ls</code>. </p>
-<pre><code class="lang-sh"> $ docker container ls
- CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES
- d6777df89fea        nginx               <span class="hljs-string">&quot;nginx -g &apos;daemon ...&quot;</span>   3 minutes ago       Up 3 minutes        0.0.0.0:8080-&gt;80/tcp      nginx
- ead80a0db505        mongo               <span class="hljs-string">&quot;docker-entrypoint...&quot;</span>   3 minutes ago       Up 3 minutes        0.0.0.0:8081-&gt;27017/tcp   mongo
- af549dccd5cf        ubuntu              <span class="hljs-string">&quot;top&quot;</span>                    8 minutes ago       Up 8 minutes                                  priceless_kepler
-</code></pre>
+<li><p>Navigate to <a href="https://www.docker.com/products/developer-tools" target="_blank">https://www.docker.com/products/developer-tools</a></p>
 </li>
-<li><p>Next,  run <code>docker container stop [container id]</code> for each container in the list. You can also use the names of the containers that you specified before.</p>
-<pre><code class="lang-sh"> $ docker container stop d67 ead af5
- d67
- ead
- af5
-</code></pre>
+<li><p>Create a Docker Hub login or log in with your Docker Hub id</p>
+<p> Docker comes with two flavors of installations. The &quot;paid&quot; version is Docker Enterprise Edition (Docker EE), and the &quot;free&quot; version is Docker Community Edition (Docker CE). We will be using only free features provided by the Docker Community Edition for this course.</p>
+</li>
+<li><p>Select and install the Docker Desktop edition for your platform</p>
+<p> On this page you will find the installation for your operating systems. For example, if you are using a Mac, select &quot;MacOS&quot;, to find the installation for the Mac platform.</p>
+<blockquote>
+<p>Installation steps for Docker Community Edition for <a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank">CentOS</a>, <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>. There are also binary versions available for other distributions.</p>
+</blockquote>
 </li>
 </ol>
-<p><strong>Note</strong>: You only have to reference enough digits of the ID to be unique. Three digits is almost always enough.</p>
-<ol>
-<li><p>Remove the stopped containers</p>
-<p> <code>docker system prune</code> is a really handy command to clean up your system. It will remove any stopped containers, unused volumes and networks, and dangling images.</p>
-<pre><code class="lang-sh"> $ docker system prune
- WARNING! This will remove:
-     - all stopped containers
-     - all volumes not used by at least one container
-     - all networks not used by at least one container
-     - all dangling images
- Are you sure you want to <span class="hljs-built_in">continue</span>? [y/N] y
- Deleted Containers:
- 7872fd96ea4695795c41150a06067d605f69702dbcb9ce49492c9029f0e1b44b
- 60abd5ee65b1e2732ddc02b971a86e22de1c1c446dab165462a08b037ef7835c
- 31617fdd8e5f584c51ce182757e24a1c9620257027665c20be75aa3ab6591740
-
- Total reclaimed space: 12B
-</code></pre>
-</li>
-</ol>
+<h2 id="optional-use-play-with-docker"><strong>Optional:</strong> Use play-with-docker</h2>
+<p>If you don&apos;t want to install Docker, an alternative is to use <a href="http://play-with-docker.com" target="_blank">Play-With-Docker</a>. Play-With-Docker is a website where you can run terminals directly from your browser that have Docker installed. All of the labs for this course can be run on Play-With-Docker, though we recommend installing docker locally on your host, so that you can continue your docker journey when this course has completed. To use Play-With-Docker, navigate to <a href="http://play-with-docker.com" target="_blank">http://play-with-docker.com</a> in your browser.</p>
 <h2 id="summary">Summary</h2>
-<p>In this lab, you created your first Ubuntu, Nginx and MongoDB containers.</p>
-<p>Key Takeaways</p>
-<ul>
-<li>Containers are composed of linux namespaces and control groups that provide isolation from other containers and the host.</li>
-<li>Because of the isolation properties of containers, you can schedule many containers on a single host without worrying about conflicting dependencies. This makes it easier to run multiple containers on a single host: fully utilizing resources allocated to that host, and ultimately saving some money on server costs.</li>
-<li>Avoid using unverified content from the Docker Store when developing your own images because these images may contain security vulnerabilities or possibly even malicious software.</li>
-<li>Containers include everything they need to run the processes within them, so there is no need to install additional dependencies directly on your host.</li>
-</ul>
+<p>By installing Docker, or alternatively, familiarizing yourself with <a href="http://play-with-docker.com" target="_blank">http://play-with-docker.com</a>, you are ready to complete the remaining labs in this course.</p>
 
                                 
                                 </section>
@@ -367,12 +341,12 @@
 
             
                 
-                <a href="step2.html" class="navigation navigation-prev " aria-label="Previous page: Step 2: Run Multiple Containers">
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../lab2/lab2.html" class="navigation navigation-next " aria-label="Next page: Adding Value with Custom Docker Images">
+                <a href="../lab1/lab1.html" class="navigation navigation-next " aria-label="Next page: Run your first container">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -383,7 +357,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Step 2: Clean Up","level":"1.3.3","depth":2,"next":{"title":"Adding Value with Custom Docker Images","level":"1.4","depth":1,"path":"lab2/lab2.md","ref":"lab2/lab2.md","articles":[{"title":"Step 1: Login to Docker Hub and Create a python app","level":"1.4.1","depth":2,"path":"lab2/step1.md","ref":"lab2/step1.md","articles":[]},{"title":"Step 2: Create and build the Docker Image","level":"1.4.2","depth":2,"path":"lab2/step2.md","ref":"lab2/step2.md","articles":[]},{"title":"Step 3: Run the Docker image","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},{"title":"Step 4: Deploying a Change","level":"1.4.4","depth":2,"path":"lab2/step4.md","ref":"lab2/step4.md","articles":[]}]},"previous":{"title":"Step 2: Run Multiple Containers","level":"1.3.2","depth":2,"path":"lab1/step2.md","ref":"lab1/step2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab1/step3.md","mtime":"2020-07-21T05:02:40.080Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T05:31:49.602Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Install Docker","level":"1.2","depth":1,"next":{"title":"Run your first container","level":"1.3","depth":1,"path":"lab1/lab1.md","ref":"lab1/lab1.md","articles":[{"title":"Step 1: Run your first container","level":"1.3.1","depth":2,"path":"lab1/step1.md","ref":"lab1/step1.md","articles":[]},{"title":"Step 2: Run Multiple Containers","level":"1.3.2","depth":2,"path":"lab1/step2.md","ref":"lab1/step2.md","articles":[]},{"title":"Step 2: Clean Up","level":"1.3.3","depth":2,"path":"lab1/step3.md","ref":"lab1/step3.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab0/lab0.md","mtime":"2020-07-21T04:57:29.466Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T05:31:49.602Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
