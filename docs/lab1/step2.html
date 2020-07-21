@@ -180,7 +180,7 @@
                 <a href="../lab2/lab2.html">
             
                     
-                    Add value with custom images
+                    Adding Value with Custom Docker Images
             
                 </a>
             
@@ -194,7 +194,7 @@
                 <a href="../lab2/step1.html">
             
                     
-                    Step 1: Adding Value with Custom Docker Images
+                    Step 1: Login to Docker Hub and Create a python app
             
                 </a>
             
@@ -318,7 +318,7 @@
 <p> Nginx is a lightweight web server. You can access it on port 8080 on your localhost.</p>
 </li>
 <li><p>Access the nginx server on <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>. If you are using the cloud shell, expand the eye icon on the upper right for the <strong>Port to preview</strong> menu and select <code>8080</code>.</p>
-<p> <img src="images/lab1_step2_nginx.png" alt="Nginx web page"></p>
+<p> <img src="../images/lab1_step2_nginx.png" alt="Nginx web page"></p>
 </li>
 <li><p>Run a mongo DB server</p>
 <p> Now, run a mongoDB server. We will use the <a href="https://store.docker.com/images/mongo" target="_blank">official mongoDB image</a> from the Docker Store. Instead of using the <code>latest</code> tag (which is the default if no tag is specified), we will use a specific version of the mongo image: 3.4.</p>
@@ -343,7 +343,7 @@
 <p> Again, since this is the first time we are running a mongo container, we will pull down the mongo image from the Docker Store. We are using the <code>--publish</code> flag to expose the 27017 mongo port on our host. We have to use a port other than 8080 for the host mapping, since that port is already exposed on our host. Again refer to the <a href="https://store.docker.com/images/mongo" target="_blank">official docs</a> on the Docker Store to get more details about using the mongo image.</p>
 </li>
 <li><p>Access <a href="http://localhost:8081" target="_blank">http://localhost:8081</a> to see some output from mongo. If you are using play-with-docker, look for the <code>8080</code> link near the top of the page.</p>
-<p> <img src="images/lab1_step2_mongo.png" alt="Mongo DB response to http request"></p>
+<p> <img src="../images/lab1_step2_mongo.png" alt="Mongo DB response to http request"></p>
 </li>
 <li><p>Check your running containers with <code>docker container ls</code></p>
 <pre><code class="lang-sh"> $ docker container ls
@@ -404,7 +404,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Step 2: Run Multiple Containers","level":"1.3.2","depth":2,"next":{"title":"Step 2: Clean Up","level":"1.3.3","depth":2,"path":"lab1/step3.md","ref":"lab1/step3.md","articles":[]},"previous":{"title":"Step 1: Run your first container","level":"1.3.1","depth":2,"path":"lab1/step1.md","ref":"lab1/step1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab1/step2.md","mtime":"2020-07-21T05:16:40.967Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T05:19:12.100Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Step 2: Run Multiple Containers","level":"1.3.2","depth":2,"next":{"title":"Step 2: Clean Up","level":"1.3.3","depth":2,"path":"lab1/step3.md","ref":"lab1/step3.md","articles":[]},"previous":{"title":"Step 1: Run your first container","level":"1.3.1","depth":2,"path":"lab1/step1.md","ref":"lab1/step1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab1/step2.md","mtime":"2020-07-21T05:21:47.250Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T05:26:53.417Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

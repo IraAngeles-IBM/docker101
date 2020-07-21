@@ -38,7 +38,7 @@
 
 1. Access the nginx server on http://localhost:8080. If you are using the cloud shell, expand the eye icon on the upper right for the **Port to preview** menu and select `8080`.
 
-    ![Nginx web page](images/lab1_step2_nginx.png)
+    ![Nginx web page](../images/lab1_step2_nginx.png)
 
 1. Run a mongo DB server
 
@@ -68,7 +68,7 @@
 
 1. Access http://localhost:8081 to see some output from mongo. If you are using play-with-docker, look for the `8080` link near the top of the page.
 
-    ![Mongo DB response to http request](images/lab1_step2_mongo.png)
+    ![Mongo DB response to http request](../images/lab1_step2_mongo.png)
 
 1. Check your running containers with `docker container ls`
 

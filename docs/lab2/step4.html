@@ -178,7 +178,7 @@
                 <a href="lab2.html">
             
                     
-                    Add value with custom images
+                    Adding Value with Custom Docker Images
             
                 </a>
             
@@ -192,7 +192,7 @@
                 <a href="step1.html">
             
                     
-                    Step 1: Adding Value with Custom Docker Images
+                    Step 1: Login to Docker Hub and Create a python app
             
                 </a>
             
@@ -363,14 +363,14 @@ COPY app.py /app.py
 </code></pre>
 <p>Each of these lines is a layer. Each layer contains only the delta, or changes from the layers before it. To put these layers together into a single running container, Docker makes use of the union file system to overlay layers transparently into a single view.</p>
 <p>Each layer of the image is read-only, except for the very top layer which is created for the container. The read/write container layer implements &quot;copy-on-write&quot; which means that files that are stored in lower image layers are pulled up to the read/write container layer only when edits are being made to those files. Those changes are then stored in the container layer. The &quot;copy-on-write&quot; function is very fast, and in almost all cases, does not have a noticeable effect on performance. You can inspect which files have been pulled up to the container level with the <code>docker diff</code> command. More information about how to use <code>docker diff</code> can be found <a href="https://docs.docker.com/engine/reference/commandline/diff/" target="_blank">here</a> .</p>
-<p><img src="images/lab2_understanding_image_layers_1.png" alt="Image Layers - thin rw layer"></p>
+<p><img src="../images/lab2_understanding_image_layers_1.png" alt="Image Layers - thin rw layer"></p>
 <p>Since image layers are read-only, they can be shared by images and by running containers. For instance, creating a new python app with its own Dockerfile with similar base layers, would share all the layers that it had in common with the first python app.</p>
 <pre><code class="lang-sh">FROM python:3.6.1-alpine
 RUN pip install flask
 CMD [<span class="hljs-string">&quot;python&quot;</span>,<span class="hljs-string">&quot;app2.py&quot;</span>]
 COPY app2.py /app2.py
 </code></pre>
-<p><img src="images/lab2_understanding_image_layers_2.png" alt="Image layers - sharing underlying layers"></p>
+<p><img src="../images/lab2_understanding_image_layers_2.png" alt="Image layers - sharing underlying layers"></p>
 <p>You can also experience the sharing of layers when you start multiple containers from the same image. Since the containers use the same read-only layers, you can imagine that starting up containers is very fast and has a very low footprint on the host.</p>
 <p>You may notice that there are duplicate lines in this Dockerfile and the Dockerfile you created earlier in this lab. Although this is a very trivial example, you can pull common lines of both Dockerfiles into a &quot;base&quot; Dockerfile, that you can then point to with each of your child Dockerfiles using the <code>FROM</code> command.</p>
 <p>Image layering enables the docker caching mechanism for builds and pushes. For example, the output for your last <code>docker push</code> shows that some of the layers of your image already exists on the Docker Hub.</p>
@@ -455,7 +455,7 @@ c86415c03c37        8 days ago          /bin/sh -c <span class="hljs-comment">#(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Step 4: Deploying a Change","level":"1.4.4","depth":2,"previous":{"title":"Step 3: Run the Docker image","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step4.md","mtime":"2020-07-21T05:10:12.655Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T05:19:12.100Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Step 4: Deploying a Change","level":"1.4.4","depth":2,"previous":{"title":"Step 3: Run the Docker image","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step4.md","mtime":"2020-07-21T05:24:08.614Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T05:26:53.417Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
