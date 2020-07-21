@@ -1,0 +1,494 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Step 4: Deploying a Change · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="step3.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">docker101 lab</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../lab0.md">
+            
+                <span>
+            
+                    
+                    Install Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../lab1/lab1.html">
+            
+                <a href="../lab1/lab1.html">
+            
+                    
+                    Run your first container
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../lab1/step1.html">
+            
+                <a href="../lab1/step1.html">
+            
+                    
+                    Step 1: Run your first container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../lab1/step2.html">
+            
+                <a href="../lab1/step2.html">
+            
+                    
+                    Step 2: Run Multiple Containers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../lab1/step3.html">
+            
+                <a href="../lab1/step3.html">
+            
+                    
+                    Step 2: Clean Up
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="lab2.html">
+            
+                <a href="lab2.html">
+            
+                    
+                    Add value with custom images
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="step1.html">
+            
+                <a href="step1.html">
+            
+                    
+                    Step 1: Adding Value with Custom Docker Images
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="step2.html">
+            
+                <a href="step2.html">
+            
+                    
+                    Step 2: Create and build the Docker Image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="step3.html">
+            
+                <a href="step3.html">
+            
+                    
+                    Step 3: Run the Docker image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.4" data-path="step4.html">
+            
+                <a href="step4.html">
+            
+                    
+                    Step 4: Deploying a Change
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Step 4: Deploying a Change</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="lab-2--adding-value-with-custom-docker-images">Lab 2- Adding Value with Custom Docker Images</h1>
+<h2 id="step-5-deploying-a-change">Step 5: Deploying a Change</h2>
+<p>The &quot;hello world!&quot; application is overrated, let&apos;s update the app so that it says &quot;hello beautiful world&quot;.</p>
+<ol>
+<li><p>Update <code>app.py</code></p>
+<p> Update the file with the following command. (copy-paste the entire code block)</p>
+<pre><code class="lang-bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;from flask import Flask
+
+ app = Flask(__name__)
+
+ @app.route(&quot;/&quot;)
+ def hello():
+    return &quot;hello beautiful world!&quot;
+
+ if __name__ == &quot;__main__&quot;:
+     app.run(host=&quot;0.0.0.0&quot;)&apos;</span> &gt; app.py
+</code></pre>
+</li>
+<li><p>Rebuild your image</p>
+<p> Now that your app is updated, you need repeat the steps above to rebuild your app and push it to the Docker Hub registry.</p>
+<pre><code class="lang-sh"> $  docker image build -t <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2 .
+ Sending build context to Docker daemon  3.072kB
+ Step 1/4 : FROM python:3.6.1-alpine
+ ---&gt; c86415c03c37
+ Step 2/4 : RUN pip install flask
+  ---&gt; Using cache
+  ---&gt; ce41f2517c16
+ Step 3/4 : CMD python app.py
+ ---&gt; Using cache
+ ---&gt; 0ab91286958b
+ Step 4/4 : COPY app.py /app.py
+  ---&gt; 3e08b2eeace1
+ Removing intermediate container 23a955e881<span class="hljs-built_in">fc</span>
+ Successfully built 3e08b2eeace1
+ Successfully tagged jzaccone/python-hello-world:latest
+</code></pre>
+<blockquote>
+<p>Notice the &quot;Using cache&quot; for steps 1-3. These layers of the Docker Image have already been built and <code>docker image build</code> will use these layers from the cache instead of rebuilding them.</p>
+</blockquote>
+</li>
+<li><p>Test your image locally. </p>
+<pre><code class="lang-sh"> $ docker run -p 5000:5000 <span class="hljs-_">-d</span> <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2
+ 0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729<span class="hljs-built_in">fc</span>27dc01b82b5aaafa26
+
+ $ curl http://localhost:5000
+ hello beatiful world!
+</code></pre>
+</li>
+<li><p>Finally re-push your image to Docker Hub</p>
+<pre><code class="lang-sh"> $ docker push <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2
+ The push refers to a repository [docker.io/jzaccone/python-hello-world]
+ 94525867566e: Pushed 
+ 64d445ecbe93: Layer already exists 
+ 18b27eac38a1: Layer already exists 
+ 3f6f25<span class="hljs-built_in">cd</span>8b1e: Layer already exists 
+ b7af9d602a0f: Layer already exists 
+ ed06208397d5: Layer already exists 
+ 5accac14015f: Layer already exists 
+ latest: digest: sha256:91874e88c14f217b4cab1dd5510da307bf7d9364bd39860c9cc8688573ab1a3a size: 1786
+</code></pre>
+<p>There is a caching mechanism in place for pushing layers too. Docker Hub already has all but one of the layers from an earlier push, so it only pushes the one layer that has changed.</p>
+<p>When you change a layer, every layer built on top of that will have to be rebuilt. Each line in a Dockerfile builds a new layer that is built on the layer created from the lines before it. This is why the order of the lines in our Dockerfile is important. We optimized our Dockerfile so that the layer that is most likely to change (<code>COPY app.py /app.py</code>) is the last line of the Dockerfile. Generally for an application, your code changes at the most frequent rate. This optimization is particularly important for CI/CD processes, where you want your automation to run as fast as possible.</p>
+</li>
+</ol>
+<h2 id="step-6-understanding-image-layers">Step 6: Understanding Image Layers</h2>
+<p>One of the major design properties of Docker is its use of the union file system. </p>
+<p>Consider the Dockerfile that we created before:</p>
+<pre><code class="lang-sh">FROM python:3.6.1-alpine
+RUN pip install flask
+CMD [<span class="hljs-string">&quot;python&quot;</span>,<span class="hljs-string">&quot;app.py&quot;</span>]
+COPY app.py /app.py
+</code></pre>
+<p>Each of these lines is a layer. Each layer contains only the delta, or changes from the layers before it. To put these layers together into a single running container, Docker makes use of the union file system to overlay layers transparently into a single view.</p>
+<p>Each layer of the image is read-only, except for the very top layer which is created for the container. The read/write container layer implements &quot;copy-on-write&quot; which means that files that are stored in lower image layers are pulled up to the read/write container layer only when edits are being made to those files. Those changes are then stored in the container layer. The &quot;copy-on-write&quot; function is very fast, and in almost all cases, does not have a noticeable effect on performance. You can inspect which files have been pulled up to the container level with the <code>docker diff</code> command. More information about how to use <code>docker diff</code> can be found <a href="https://docs.docker.com/engine/reference/commandline/diff/" target="_blank">here</a> .</p>
+<p><img src="images/lab2_understanding_image_layers_1.png" alt="Image Layers - thin rw layer"></p>
+<p>Since image layers are read-only, they can be shared by images and by running containers. For instance, creating a new python app with its own Dockerfile with similar base layers, would share all the layers that it had in common with the first python app.</p>
+<pre><code class="lang-sh">FROM python:3.6.1-alpine
+RUN pip install flask
+CMD [<span class="hljs-string">&quot;python&quot;</span>,<span class="hljs-string">&quot;app2.py&quot;</span>]
+COPY app2.py /app2.py
+</code></pre>
+<p><img src="images/lab2_understanding_image_layers_2.png" alt="Image layers - sharing underlying layers"></p>
+<p>You can also experience the sharing of layers when you start multiple containers from the same image. Since the containers use the same read-only layers, you can imagine that starting up containers is very fast and has a very low footprint on the host.</p>
+<p>You may notice that there are duplicate lines in this Dockerfile and the Dockerfile you created earlier in this lab. Although this is a very trivial example, you can pull common lines of both Dockerfiles into a &quot;base&quot; Dockerfile, that you can then point to with each of your child Dockerfiles using the <code>FROM</code> command.</p>
+<p>Image layering enables the docker caching mechanism for builds and pushes. For example, the output for your last <code>docker push</code> shows that some of the layers of your image already exists on the Docker Hub.</p>
+<pre><code class="lang-sh">$ docker push <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world
+The push refers to a repository [docker.io/jzaccone/python-hello-world]
+94525867566e: Pushed 
+64d445ecbe93: Layer already exists 
+18b27eac38a1: Layer already exists 
+3f6f25<span class="hljs-built_in">cd</span>8b1e: Layer already exists 
+b7af9d602a0f: Layer already exists 
+ed06208397d5: Layer already exists 
+5accac14015f: Layer already exists 
+latest: digest: sha256:91874e88c14f217b4cab1dd5510da307bf7d9364bd39860c9cc8688573ab1a3a size: 1786
+</code></pre>
+<p>To look more closely at layers, you can use the <code>docker image history</code> command of the python image we created.</p>
+<pre><code class="lang-sh">$ docker image <span class="hljs-built_in">history</span> <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+f1b2781b3111        5 minutes ago       /bin/sh -c <span class="hljs-comment">#(nop) COPY file:0114358808a1bb...   159B                </span>
+0ab91286958b        5 minutes ago       /bin/sh -c <span class="hljs-comment">#(nop)  CMD [&quot;python&quot; &quot;app.py&quot;]      0B                  </span>
+ce41f2517c16        5 minutes ago       /bin/sh -c pip install flask                    10.6MB              
+c86415c03c37        8 days ago          /bin/sh -c <span class="hljs-comment">#(nop)  CMD [&quot;python3&quot;]              0B                  </span>
+&lt;missing&gt;           8 days ago          /bin/sh -c <span class="hljs-built_in">set</span> -ex;   apk add --no-cache -...   5.73MB              
+&lt;missing&gt;           8 days ago          /bin/sh -c <span class="hljs-comment">#(nop)  ENV PYTHON_PIP_VERSION=...   0B                  </span>
+&lt;missing&gt;           8 days ago          /bin/sh -c <span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/bin  &amp;&amp; ln <span class="hljs-_">-s</span> idl...   32B                 
+&lt;missing&gt;           8 days ago          /bin/sh -c <span class="hljs-built_in">set</span> -ex  &amp;&amp; apk add --no-cache ...   77.5MB              
+&lt;missing&gt;           8 days ago          /bin/sh -c <span class="hljs-comment">#(nop)  ENV PYTHON_VERSION=3.6.1     0B                  </span>
+&lt;missing&gt;           8 days ago          /bin/sh -c <span class="hljs-comment">#(nop)  ENV GPG_KEY=0D96DF4D411...   0B                  </span>
+&lt;missing&gt;           8 days ago          /bin/sh -c apk add --no-cache ca-certificates   618kB               
+&lt;missing&gt;           8 days ago          /bin/sh -c <span class="hljs-comment">#(nop)  ENV LANG=C.UTF-8             0B                  </span>
+&lt;missing&gt;           8 days ago          /bin/sh -c <span class="hljs-comment">#(nop)  ENV PATH=/usr/local/bin...   0B                  </span>
+&lt;missing&gt;           9 days ago          /bin/sh -c <span class="hljs-comment">#(nop)  CMD [&quot;/bin/sh&quot;]              0B                  </span>
+&lt;missing&gt;           9 days ago          /bin/sh -c <span class="hljs-comment">#(nop) ADD file:cf1b74f7af8abcf...   4.81MB</span>
+</code></pre>
+<p>Each line represents a layer of the image. You&apos;ll notice that the top lines match to your Dockerfile that you created, and the lines below are pulled from the parent python image. Don&apos;t worry about the &quot;\<missing\>&quot; tags. These are still normal layers; they have just not been given an ID by the docker system.</missing\></p>
+<h2 id="summary">Summary</h2>
+<p>In this lab, you started adding value by creating your own custom docker containers. </p>
+<p>Key Takeaways:</p>
+<ul>
+<li>The Dockerfile is how you create reproducible builds for your application and how you integrate your application with Docker into the CI/CD pipeline</li>
+<li>Docker images can be made available to all of your environments through a central registry. The Docker Hub is one example of a registry, but you can deploy your own registry on servers you control.</li>
+<li>Docker images contain all the dependencies that it needs to run an application within the image. This is useful because we no longer have deal with environment drift (version differences) when we rely on dependencies that are install on every environment we deploy to.</li>
+<li>Docker makes use of the union file system and &quot;copy on write&quot; to reuse layers of images. This lowers the footprint of storing images and significantly increases the performance of starting containers.</li>
+<li>Image layers are cached by the Docker build and push system. No need to rebuild or repush image layers that are already present on the desired system.</li>
+<li>Each line in a Dockerfile creates a new layer, and because of the layer cache, the lines that change more frequently (e.g. adding source code to an image) should be listed near the bottom of the file.</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="step3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Step 3: Run the Docker image">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Step 4: Deploying a Change","level":"1.4.4","depth":2,"previous":{"title":"Step 3: Run the Docker image","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step4.md","mtime":"2020-07-21T05:10:12.655Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-21T05:17:37.657Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
