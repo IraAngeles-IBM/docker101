@@ -11,7 +11,7 @@ We are going to use the Docker CLI to run our first container.
     Use the `docker container run` command to run a container with the ubuntu image using the `top` command. The `-t` flags allocate a pseudo-TTY which we need for the `top` to work correctly.
 
     ```sh
-    $ docker container run -it ubuntu top
+    $ docker container run -t ubuntu top
     Unable to find image 'ubuntu:latest' locally
     latest: Pulling from library/ubuntu
     aafe6b5e13de: Pull complete 
