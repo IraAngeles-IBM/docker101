@@ -1,6 +1,8 @@
 # Docker 101
 
-This is the repository of the labs for the Intro to Docker developerWorks course.
+Series of labs and instructions to introduce you to containers and Docker. Learn to run a container, inspect a container and understand the isolation of processes, create a Dockerfile, build an image from a Dockerfile and understand layers, tag and push images to a registry, scale and update containers, and more.
+
+## Agenda
 
 - lab0 - [Install Docker](lab0/lab0.md)
 - lab1 - [Run your first container](lab1/lab1.md)
