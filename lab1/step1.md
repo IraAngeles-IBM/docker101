@@ -116,6 +116,5 @@ We are going to use the Docker CLI to run our first container.
 
     ![lsns](../images/linux_namespace.png)
 
-
 1. Clean up the container running the `top` processes by typing: `<ctrl>-c.`
 
