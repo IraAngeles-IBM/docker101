@@ -6,7 +6,11 @@ In this lab, you will install docker. We will be using docker throughout the res
 
 ## Prerequisites
 
-None
+For this workshop you must have:
+
+- Docker CLI,
+- Docker Engine,
+- Docker Registry account,
 
 ## Step 1: Install Docker
 
