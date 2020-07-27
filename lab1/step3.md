@@ -23,7 +23,7 @@ Completing this lab results in a bunch of running containers on your host. Let's
     af5
     ```
 
-**Note**: You only have to reference enough digits of the ID to be unique. Three digits is almost always enough.
+    **Note**: You only have to reference enough digits of the ID to be unique. Three digits is almost always enough.
 
 1. Remove the stopped containers
 
