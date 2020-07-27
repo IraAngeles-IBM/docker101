@@ -10,7 +10,7 @@ For this workshop you must have:
 
 - Docker CLI,
 - Docker Engine,
-- Docker Registry account,
+- Docker Registry account (Docker ID)
 
 ## Step 1: Install Docker
 
