@@ -34,18 +34,19 @@
 
 1. Run the following command to create a file named `app.py` with a simple python program. (copy-paste the entire code block)
 
-    ```bash
-    echo 'from flask import Flask
+```python
+from flask import Flask
 
-    app = Flask(__name__)
+app = Flask(__name__)
 
-    @app.route("/")
-    def hello():
-        return "hello world!"
+@app.route("/")
 
-    if __name__ == "__main__":
-        app.run(host="0.0.0.0")' > app.py
-    ```
+def hello():
+return "hello world!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
+```
 
     This is a simple python app that uses flask to expose a http web server on port 5000 (5000 is the default port for flask). Don't worry if you are not too familiar with python or flask, these concepts can be applied to an application written in any language.
 

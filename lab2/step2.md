@@ -6,11 +6,11 @@ If you don't have python install locally, don't worry! Because you don't need it
 
 1. Create a `Dockerfile` but running the following command. (copy-paste the entire code block)
 
-    ```sh
-    echo 'FROM python:3.6.1-alpine
+    ```DockerFile
+    FROM python:3.6.1-alpine
     RUN pip install flask
     CMD ["python","app.py"]
-    COPY app.py /app.py' > Dockerfile
+    COPY app.py /app.py
     ```
 
     A Dockerfile lists the instructions needed to build a docker image. Let's go through the above file line by line.
