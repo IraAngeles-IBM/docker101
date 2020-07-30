@@ -53,7 +53,7 @@ Now that you have built the image, you can run it to see that it works.
 
     ```sh
     docker push $DOCKER_USER/python-hello-world:v1
-    $ The push refers to a repository [docker.io/jzaccone/python-hello-world]
+    $ The push refers to a repository [docker.io/isaias/python-hello-world]
     2bce026769ac: Pushed 
     64d445ecbe93: Pushed 
     18b27eac38a1: Mounted from library/python 
