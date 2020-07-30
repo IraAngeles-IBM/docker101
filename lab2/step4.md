@@ -6,7 +6,7 @@ The "hello world!" application is overrated, let's update the app so that it say
 
 1. Update `app.py`
 
-    Update the file with the following command. In the terminal for Mac OS or Linux, copy-paste the entire code block or edit the the `app.py`.
+    Update the file with the following command. In the terminal for Mac OS or Linux, copy-paste the entire code block or edit the `app.py`.
 
     ```bash
     echo 'from flask import Flask

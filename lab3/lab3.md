@@ -3,7 +3,10 @@
 1. Display running container type the command **docker container ls**
 
     ```sh
-    docker container ls
+    isaias@Isaiass-MBP myapp % docker container ls
+    CONTAINER ID        IMAGE                            COMMAND             CREATED             STATUS              PORTS                    NAMES
+    5fb192e83b28        isaias66/python-hello-world:v1   "python app.py"     4 seconds ago       Up 4 seconds        0.0.0.0:5000->5000/tcp   python-isaias66
+    isaias@Isaiass-MBP myapp % 
     ```
 1. Display all containers whether running or not, type command **docker ps -a**
 
