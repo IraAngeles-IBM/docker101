@@ -34,7 +34,7 @@
 
 1. Run the following command to create a file named `app.py` with a simple python program. (copy-paste the entire code block)
 
-    ```python
+    ```py
     from flask import Flask
 
     app = Flask(__name__)
