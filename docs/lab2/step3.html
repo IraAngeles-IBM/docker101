@@ -246,6 +246,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5" data-path="../lab3/lab3.html">
+            
+                <a href="../lab3/lab3.html">
+            
+                    
+                    Lab 3: Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -316,21 +329,21 @@
 <p>Now that you have built the image, you can run it to see that it works.</p>
 <ol>
 <li><p>Run the Docker image</p>
-<pre><code class="lang-sh"> $ docker run --name python-<span class="hljs-variable">$DOCKER_USER</span> -p 5000:5000 <span class="hljs-_">-d</span> <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1
- 0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729<span class="hljs-built_in">fc</span>27dc01b82b5aaafa26
+<pre><code class="lang-sh"> docker run --name python-<span class="hljs-variable">$DOCKER_USER</span> -p 5000:5000 <span class="hljs-_">-d</span> <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1
+ $ 0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729<span class="hljs-built_in">fc</span>27dc01b82b5aaafa26
 </code></pre>
 <p> The <code>-p</code> flag maps a port running inside the container to your host. In this case, we are mapping the python app running on port 5000 inside the container, to an external port on your host.</p>
 </li>
 <li><p>curl <code>http://localhost:5000</code> to see the results. </p>
-<pre><code class="lang-sh"> $ curl http://localhost:5000
- hello world
+<pre><code class="lang-sh"> curl http://localhost:5000
+ $ hello world
 </code></pre>
 <p> You should see &quot;hello world!&quot; in your terminal.</p>
 </li>
 <li><p>Check the log output of the container.</p>
 <p> If you want to see logs from your application you can use the <code>docker container logs</code> command. By default, <code>docker container logs</code> prints out what is sent to standard out by your application. Use <code>docker container ls</code> to find the id for your running container.</p>
-<pre><code class="lang-sh"> $ docker container logs python-<span class="hljs-variable">$DOCKER_USER</span> 
- * Serving Flask app <span class="hljs-string">&quot;app&quot;</span> (lazy loading)
+<pre><code class="lang-sh"> docker container logs python-<span class="hljs-variable">$DOCKER_USER</span> 
+ $ * Serving Flask app <span class="hljs-string">&quot;app&quot;</span> (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it <span class="hljs-keyword">in</span> a production deployment.
     Use a production WSGI server instead.
@@ -340,7 +353,7 @@
 </code></pre>
 </li>
 <li><p>Finally, clean up your image</p>
-<pre><code class="lang-sh"> $ docker container rm <span class="hljs-_">-f</span> python-<span class="hljs-variable">$DOCKER_USER</span>
+<pre><code class="lang-sh"> docker container rm <span class="hljs-_">-f</span> python-<span class="hljs-variable">$DOCKER_USER</span>
 </code></pre>
 <p> The Dockerfile is how you create reproducible builds for your application. A common workflow is to have your CI/CD automation run <code>docker image build</code> as part of its build process. Once images are built, they will be sent to a central registry, where it can be accessed by all environments (such as a test environment) that need to run instances of that application. In the next step, we will push our custom image to the public docker registry: the docker hub, where it can be consumed by other developers and operators.</p>
 </li>
@@ -349,8 +362,8 @@
 <ol>
 <li><p>Push your image to the Dockerhub registry</p>
 <p> Once we have a properly tagged image, we can use the <code>docker push</code> command to push our image to the Docker Hub registry.</p>
-<pre><code class="lang-sh"> $ docker push <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1
- The push refers to a repository [docker.io/jzaccone/python-hello-world]
+<pre><code class="lang-sh"> docker push <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1
+ $ The push refers to a repository [docker.io/jzaccone/python-hello-world]
  2bce026769ac: Pushed 
  64d445ecbe93: Pushed 
  18b27eac38a1: Mounted from library/python 
@@ -413,7 +426,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Run the Docker image and Push to a central registry","level":"1.4.3","depth":2,"next":{"title":"Deploying a Change","level":"1.4.4","depth":2,"path":"lab2/step4.md","ref":"lab2/step4.md","articles":[]},"previous":{"title":"Create and build the Docker Image","level":"1.4.2","depth":2,"path":"lab2/step2.md","ref":"lab2/step2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step3.md","mtime":"2020-07-21T05:18:57.587Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T03:25:22.464Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Run the Docker image and Push to a central registry","level":"1.4.3","depth":2,"next":{"title":"Deploying a Change","level":"1.4.4","depth":2,"path":"lab2/step4.md","ref":"lab2/step4.md","articles":[]},"previous":{"title":"Create and build the Docker Image","level":"1.4.2","depth":2,"path":"lab2/step2.md","ref":"lab2/step2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step3.md","mtime":"2020-07-30T04:13:39.119Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T04:27:19.091Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -26,8 +26,8 @@ The "hello world!" application is overrated, let's update the app so that it say
     Now that your app is updated, you need repeat the steps above to rebuild your app and push it to the Docker Hub registry.
 
     ```sh
-    $  docker image build -t $DOCKER_USER/python-hello-world:v2 .
-    Sending build context to Docker daemon  3.072kB
+    docker image build -t $DOCKER_USER/python-hello-world:v2 .
+    $ Sending build context to Docker daemon  3.072kB
     Step 1/4 : FROM python:3.6.1-alpine
     ---> c86415c03c37
     Step 2/4 : RUN pip install flask
@@ -48,18 +48,18 @@ The "hello world!" application is overrated, let's update the app so that it say
 1. Test your image locally. 
 
     ```sh
-    $ docker run -p 5000:5000 -d $DOCKER_USER/python-hello-world:v2
-    0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729fc27dc01b82b5aaafa26
+    docker run -p 5000:5000 -d $DOCKER_USER/python-hello-world:v2
+    $ 0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729fc27dc01b82b5aaafa26
 
-    $ curl http://localhost:5000
-    hello beatiful world!
+    curl http://localhost:5000
+    $ hello beatiful world!
     ```
 
 1. Finally re-push your image to Docker Hub
 
     ```sh
-    $ docker push $DOCKER_USER/python-hello-world:v2
-    The push refers to a repository [docker.io/jzaccone/python-hello-world]
+    docker push $DOCKER_USER/python-hello-world:v2
+    $ The push refers to a repository [docker.io/jzaccone/python-hello-world]
     94525867566e: Pushed 
     64d445ecbe93: Layer already exists 
     18b27eac38a1: Layer already exists 
@@ -80,7 +80,7 @@ One of the major design properties of Docker is its use of the union file system
 
 Consider the Dockerfile that we created before:
 
-```sh
+```Dockerfile
 FROM python:3.6.1-alpine
 RUN pip install flask
 CMD ["python","app.py"]
@@ -95,7 +95,7 @@ Each layer of the image is read-only, except for the very top layer which is cre
 
 Since image layers are read-only, they can be shared by images and by running containers. For instance, creating a new python app with its own Dockerfile with similar base layers, would share all the layers that it had in common with the first python app.
 
-```sh
+```Dockerfile
 FROM python:3.6.1-alpine
 RUN pip install flask
 CMD ["python","app2.py"]
@@ -111,8 +111,8 @@ You may notice that there are duplicate lines in this Dockerfile and the Dockerf
 Image layering enables the docker caching mechanism for builds and pushes. For example, the output for your last `docker push` shows that some of the layers of your image already exists on the Docker Hub.
 
 ```sh
-$ docker push $DOCKER_USER/python-hello-world
-The push refers to a repository [docker.io/jzaccone/python-hello-world]
+docker push $DOCKER_USER/python-hello-world
+$ The push refers to a repository [docker.io/jzaccone/python-hello-world]
 94525867566e: Pushed 
 64d445ecbe93: Layer already exists 
 18b27eac38a1: Layer already exists 
@@ -126,8 +126,8 @@ latest: digest: sha256:91874e88c14f217b4cab1dd5510da307bf7d9364bd39860c9cc868857
 To look more closely at layers, you can use the `docker image history` command of the python image we created.
 
 ```sh
-$ docker image history $DOCKER_USER/python-hello-world:v1
-IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+docker image history $DOCKER_USER/python-hello-world:v1
+$ IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 f1b2781b3111        5 minutes ago       /bin/sh -c #(nop) COPY file:0114358808a1bb...   159B                
 0ab91286958b        5 minutes ago       /bin/sh -c #(nop)  CMD ["python" "app.py"]      0B                  
 ce41f2517c16        5 minutes ago       /bin/sh -c pip install flask                    10.6MB              

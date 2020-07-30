@@ -246,6 +246,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5" data-path="../lab3/lab3.html">
+            
+                <a href="../lab3/lab3.html">
+            
+                    
+                    Lab 3: Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -315,7 +328,7 @@
 <h2 id="step-2-create-and-build-the-docker-image">Step 2: Create and build the Docker Image</h2>
 <p>If you don&apos;t have python install locally, don&apos;t worry! Because you don&apos;t need it. One of the advantages of using Docker containers is that you can build python into your containers, without having python installed on your host. </p>
 <ol>
-<li><p>Create a <code>Dockerfile</code> but running the following command. (copy-paste the entire code block)</p>
+<li><p>Create a <code>Dockerfile</code> but running the following command. Using any code editor, copy-paste the entire code block</p>
 <pre><code class="lang-DockerFile"> <span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.6</span>.<span class="hljs-number">1</span>-alpine
  <span class="hljs-keyword">RUN</span> <span class="bash">pip install flask
 </span> <span class="hljs-keyword">CMD</span> <span class="bash">[<span class="hljs-string">&quot;python&quot;</span>,<span class="hljs-string">&quot;app.py&quot;</span>]
@@ -340,8 +353,8 @@
 </li>
 <li><p>Build the docker image. </p>
 <p> Pass in <code>-t</code> to name your image <code>$DOCKER_USER/python-hello-world</code>, with the tag <code>v1</code> to indicate this is the first version of the image</p>
-<pre><code class="lang-sh"> $ docker image build -t <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1 .
- Sending build context to Docker daemon  3.072kB
+<pre><code class="lang-sh"> docker image build -t <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1 .
+ $ Sending build context to Docker daemon  3.072kB
  Step 1/4 : FROM python:3.6.1-alpine
  3.6.1-alpine: Pulling from library/python
  acb474fa8956: Pull complete 
@@ -389,8 +402,8 @@
  Successfully tagged python-hello-world:latest
 </code></pre>
 <p> Verify that your image shows up in your image list via <code>docker image ls | grep $DOCKER_USEr</code>.</p>
-<pre><code class="lang-sh"> $ docker image ls | grep <span class="hljs-variable">$DOCKER_USER</span>
- jzaccone/python-hello-world                                                                                                                                       v1                  7feaf028e337        9 seconds ago       98.7MB
+<pre><code class="lang-sh"> docker image ls | grep <span class="hljs-variable">$DOCKER_USER</span>
+ $ isaias/python-hello-world                                                                                                                                       v1                  7feaf028e337        9 seconds ago       98.7MB
 </code></pre>
 </li>
 </ol>
@@ -437,7 +450,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Create and build the Docker Image","level":"1.4.2","depth":2,"next":{"title":"Run the Docker image and Push to a central registry","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},"previous":{"title":"Login to Docker Hub and Create a python app","level":"1.4.1","depth":2,"path":"lab2/step1.md","ref":"lab2/step1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step2.md","mtime":"2020-07-29T08:23:17.955Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T03:25:22.464Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Create and build the Docker Image","level":"1.4.2","depth":2,"next":{"title":"Run the Docker image and Push to a central registry","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},"previous":{"title":"Login to Docker Hub and Create a python app","level":"1.4.1","depth":2,"path":"lab2/step1.md","ref":"lab2/step1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step2.md","mtime":"2020-07-30T04:24:19.068Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T04:27:19.091Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

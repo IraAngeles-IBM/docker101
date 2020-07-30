@@ -11,7 +11,7 @@
 1. Save your DockerHub username into a variable, so that you can copy/paste the rest of the commands for this lab. Replace the command below with your username.
 
     ```sh
-    $ export DOCKER_USER=[docker username]
+    export DOCKER_USER=[docker username]
     ```
 
 1. Login
@@ -19,7 +19,7 @@
     You can log into the docker registry account by typing `docker login` on your terminal.
 
     ```sh
-    $ docker login -u $DOCKER_USER
+    docker login -u $DOCKER_USER
     Password:
     ```
 
@@ -28,11 +28,11 @@
 1. Create a folder for this project, If you are using a cloud shell use:
 
     ```sh
-    $ mkdir myapp
-    $ cd myapp
+    mkdir myapp
+    cd myapp
     ```
 
-1. Run the following command to create a file named `app.py` with a simple python program. In terminal, copy-paste the entire code block.
+1. Run the following command to create a file named `app.py` with a simple python program. In Mac OS or Linux terminal, copy-paste the entire code block.
 
     ```bash
     echo 'from flask import Flask

@@ -7,8 +7,8 @@ Now that you have built the image, you can run it to see that it works.
 1. Run the Docker image
 
     ```sh
-    $ docker run --name python-$DOCKER_USER -p 5000:5000 -d $DOCKER_USER/python-hello-world:v1
-    0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729fc27dc01b82b5aaafa26
+    docker run --name python-$DOCKER_USER -p 5000:5000 -d $DOCKER_USER/python-hello-world:v1
+    $ 0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729fc27dc01b82b5aaafa26
     ```
 
     The `-p` flag maps a port running inside the container to your host. In this case, we are mapping the python app running on port 5000 inside the container, to an external port on your host.
@@ -16,8 +16,8 @@ Now that you have built the image, you can run it to see that it works.
 1. curl `http://localhost:5000` to see the results. 
 
     ```sh
-    $ curl http://localhost:5000
-    hello world
+    curl http://localhost:5000
+    $ hello world
     ```
 
     You should see "hello world!" in your terminal.
@@ -27,8 +27,8 @@ Now that you have built the image, you can run it to see that it works.
     If you want to see logs from your application you can use the `docker container logs` command. By default, `docker container logs` prints out what is sent to standard out by your application. Use `docker container ls` to find the id for your running container.
 
     ```sh
-    $ docker container logs python-$DOCKER_USER 
-    * Serving Flask app "app" (lazy loading)
+    docker container logs python-$DOCKER_USER 
+    $ * Serving Flask app "app" (lazy loading)
     * Environment: production
       WARNING: This is a development server. Do not use it in a production deployment.
        Use a production WSGI server instead.
@@ -40,7 +40,7 @@ Now that you have built the image, you can run it to see that it works.
 1. Finally, clean up your image
 
     ```sh
-    $ docker container rm -f python-$DOCKER_USER
+    docker container rm -f python-$DOCKER_USER
     ```
 
     The Dockerfile is how you create reproducible builds for your application. A common workflow is to have your CI/CD automation run `docker image build` as part of its build process. Once images are built, they will be sent to a central registry, where it can be accessed by all environments (such as a test environment) that need to run instances of that application. In the next step, we will push our custom image to the public docker registry: the docker hub, where it can be consumed by other developers and operators.
@@ -52,8 +52,8 @@ Now that you have built the image, you can run it to see that it works.
     Once we have a properly tagged image, we can use the `docker push` command to push our image to the Docker Hub registry.
 
     ```sh
-    $ docker push $DOCKER_USER/python-hello-world:v1
-    The push refers to a repository [docker.io/jzaccone/python-hello-world]
+    docker push $DOCKER_USER/python-hello-world:v1
+    $ The push refers to a repository [docker.io/jzaccone/python-hello-world]
     2bce026769ac: Pushed 
     64d445ecbe93: Pushed 
     18b27eac38a1: Mounted from library/python 

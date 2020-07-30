@@ -30,7 +30,7 @@ Completing this lab results in a bunch of running containers on your host. Let's
     `docker system prune` is a really handy command to clean up your system. It will remove any stopped containers, unused volumes and networks, and dangling images.
 
     ```sh
-    $ docker system prune
+    docker system prune
     WARNING! This will remove:
         - all stopped containers
         - all volumes not used by at least one container

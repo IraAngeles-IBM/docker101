@@ -4,7 +4,7 @@
 
 If you don't have python install locally, don't worry! Because you don't need it. One of the advantages of using Docker containers is that you can build python into your containers, without having python installed on your host. 
 
-1. Create a `Dockerfile` but running the following command. (copy-paste the entire code block)
+1. Create a `Dockerfile` but running the following command. Using any code editor, copy-paste the entire code block
 
     ```DockerFile
     FROM python:3.6.1-alpine
@@ -50,8 +50,8 @@ If you don't have python install locally, don't worry! Because you don't need it
     Pass in `-t` to name your image `$DOCKER_USER/python-hello-world`, with the tag `v1` to indicate this is the first version of the image
 
     ```sh
-    $ docker image build -t $DOCKER_USER/python-hello-world:v1 .
-    Sending build context to Docker daemon  3.072kB
+    docker image build -t $DOCKER_USER/python-hello-world:v1 .
+    $ Sending build context to Docker daemon  3.072kB
     Step 1/4 : FROM python:3.6.1-alpine
     3.6.1-alpine: Pulling from library/python
     acb474fa8956: Pull complete 
@@ -102,7 +102,7 @@ If you don't have python install locally, don't worry! Because you don't need it
     Verify that your image shows up in your image list via `docker image ls | grep $DOCKER_USEr`.
 
     ```sh
-    $ docker image ls | grep $DOCKER_USER
-    jzaccone/python-hello-world                                                                                                                                       v1                  7feaf028e337        9 seconds ago       98.7MB
+    docker image ls | grep $DOCKER_USER
+    $ isaias/python-hello-world                                                                                                                                       v1                  7feaf028e337        9 seconds ago       98.7MB
     ```
 

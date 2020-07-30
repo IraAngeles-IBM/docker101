@@ -12,6 +12,7 @@
     * [Create and build the Docker Image](lab2/step2.md)
     * [Run the Docker image and Push to a central registry](lab2/step3.md)
     * [Deploying a Change](lab2/step4.md)
+* [Lab 3: Troubleshooting](lab3/lab3.md)
 
 ## IBM Developer
 

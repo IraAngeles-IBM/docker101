@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../team.html" />
+    <link rel="next" href="../lab3/lab3.html" />
     
     
     <link rel="prev" href="step3.html" />
@@ -246,6 +246,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5" data-path="../lab3/lab3.html">
+            
+                <a href="../lab3/lab3.html">
+            
+                    
+                    Lab 3: Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -331,8 +344,8 @@
 </li>
 <li><p>Rebuild your image</p>
 <p> Now that your app is updated, you need repeat the steps above to rebuild your app and push it to the Docker Hub registry.</p>
-<pre><code class="lang-sh"> $  docker image build -t <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2 .
- Sending build context to Docker daemon  3.072kB
+<pre><code class="lang-sh"> docker image build -t <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2 .
+ $ Sending build context to Docker daemon  3.072kB
  Step 1/4 : FROM python:3.6.1-alpine
  ---&gt; c86415c03c37
  Step 2/4 : RUN pip install flask
@@ -352,16 +365,16 @@
 </blockquote>
 </li>
 <li><p>Test your image locally. </p>
-<pre><code class="lang-sh"> $ docker run -p 5000:5000 <span class="hljs-_">-d</span> <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2
- 0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729<span class="hljs-built_in">fc</span>27dc01b82b5aaafa26
+<pre><code class="lang-sh"> docker run -p 5000:5000 <span class="hljs-_">-d</span> <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2
+ $ 0b2ba61df37fb4038d9ae5d145740c63c2c211ae2729<span class="hljs-built_in">fc</span>27dc01b82b5aaafa26
 
- $ curl http://localhost:5000
- hello beatiful world!
+ curl http://localhost:5000
+ $ hello beatiful world!
 </code></pre>
 </li>
 <li><p>Finally re-push your image to Docker Hub</p>
-<pre><code class="lang-sh"> $ docker push <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2
- The push refers to a repository [docker.io/jzaccone/python-hello-world]
+<pre><code class="lang-sh"> docker push <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v2
+ $ The push refers to a repository [docker.io/jzaccone/python-hello-world]
  94525867566e: Pushed 
  64d445ecbe93: Layer already exists 
  18b27eac38a1: Layer already exists 
@@ -378,26 +391,26 @@
 <h2 id="step-6-understanding-image-layers">Step 6: Understanding Image Layers</h2>
 <p>One of the major design properties of Docker is its use of the union file system. </p>
 <p>Consider the Dockerfile that we created before:</p>
-<pre><code class="lang-sh">FROM python:3.6.1-alpine
-RUN pip install flask
-CMD [<span class="hljs-string">&quot;python&quot;</span>,<span class="hljs-string">&quot;app.py&quot;</span>]
-COPY app.py /app.py
-</code></pre>
+<pre><code class="lang-Dockerfile"><span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.6</span>.<span class="hljs-number">1</span>-alpine
+<span class="hljs-keyword">RUN</span> <span class="bash">pip install flask
+</span><span class="hljs-keyword">CMD</span> <span class="bash">[<span class="hljs-string">&quot;python&quot;</span>,<span class="hljs-string">&quot;app.py&quot;</span>]
+</span><span class="hljs-keyword">COPY</span> <span class="bash">app.py /app.py
+</span></code></pre>
 <p>Each of these lines is a layer. Each layer contains only the delta, or changes from the layers before it. To put these layers together into a single running container, Docker makes use of the union file system to overlay layers transparently into a single view.</p>
 <p>Each layer of the image is read-only, except for the very top layer which is created for the container. The read/write container layer implements &quot;copy-on-write&quot; which means that files that are stored in lower image layers are pulled up to the read/write container layer only when edits are being made to those files. Those changes are then stored in the container layer. The &quot;copy-on-write&quot; function is very fast, and in almost all cases, does not have a noticeable effect on performance. You can inspect which files have been pulled up to the container level with the <code>docker diff</code> command. More information about how to use <code>docker diff</code> can be found <a href="https://docs.docker.com/engine/reference/commandline/diff/" target="_blank">here</a> .</p>
 <p><img src="../images/lab2_understanding_image_layers_1.png" alt="Image Layers - thin rw layer"></p>
 <p>Since image layers are read-only, they can be shared by images and by running containers. For instance, creating a new python app with its own Dockerfile with similar base layers, would share all the layers that it had in common with the first python app.</p>
-<pre><code class="lang-sh">FROM python:3.6.1-alpine
-RUN pip install flask
-CMD [<span class="hljs-string">&quot;python&quot;</span>,<span class="hljs-string">&quot;app2.py&quot;</span>]
-COPY app2.py /app2.py
-</code></pre>
+<pre><code class="lang-Dockerfile"><span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.6</span>.<span class="hljs-number">1</span>-alpine
+<span class="hljs-keyword">RUN</span> <span class="bash">pip install flask
+</span><span class="hljs-keyword">CMD</span> <span class="bash">[<span class="hljs-string">&quot;python&quot;</span>,<span class="hljs-string">&quot;app2.py&quot;</span>]
+</span><span class="hljs-keyword">COPY</span> <span class="bash">app2.py /app2.py
+</span></code></pre>
 <p><img src="../images/lab2_understanding_image_layers_2.png" alt="Image layers - sharing underlying layers"></p>
 <p>You can also experience the sharing of layers when you start multiple containers from the same image. Since the containers use the same read-only layers, you can imagine that starting up containers is very fast and has a very low footprint on the host.</p>
 <p>You may notice that there are duplicate lines in this Dockerfile and the Dockerfile you created earlier in this lab. Although this is a very trivial example, you can pull common lines of both Dockerfiles into a &quot;base&quot; Dockerfile, that you can then point to with each of your child Dockerfiles using the <code>FROM</code> command.</p>
 <p>Image layering enables the docker caching mechanism for builds and pushes. For example, the output for your last <code>docker push</code> shows that some of the layers of your image already exists on the Docker Hub.</p>
-<pre><code class="lang-sh">$ docker push <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world
-The push refers to a repository [docker.io/jzaccone/python-hello-world]
+<pre><code class="lang-sh">docker push <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world
+$ The push refers to a repository [docker.io/jzaccone/python-hello-world]
 94525867566e: Pushed 
 64d445ecbe93: Layer already exists 
 18b27eac38a1: Layer already exists 
@@ -408,8 +421,8 @@ ed06208397d5: Layer already exists
 latest: digest: sha256:91874e88c14f217b4cab1dd5510da307bf7d9364bd39860c9cc8688573ab1a3a size: 1786
 </code></pre>
 <p>To look more closely at layers, you can use the <code>docker image history</code> command of the python image we created.</p>
-<pre><code class="lang-sh">$ docker image <span class="hljs-built_in">history</span> <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1
-IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+<pre><code class="lang-sh">docker image <span class="hljs-built_in">history</span> <span class="hljs-variable">$DOCKER_USER</span>/python-hello-world:v1
+$ IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 f1b2781b3111        5 minutes ago       /bin/sh -c <span class="hljs-comment">#(nop) COPY file:0114358808a1bb...   159B                </span>
 0ab91286958b        5 minutes ago       /bin/sh -c <span class="hljs-comment">#(nop)  CMD [&quot;python&quot; &quot;app.py&quot;]      0B                  </span>
 ce41f2517c16        5 minutes ago       /bin/sh -c pip install flask                    10.6MB              
@@ -470,7 +483,7 @@ c86415c03c37        8 days ago          /bin/sh -c <span class="hljs-comment">#(
                 </a>
                 
                 
-                <a href="../team.html" class="navigation navigation-next " aria-label="Next page: IBM Developer ASEAN Team">
+                <a href="../lab3/lab3.html" class="navigation navigation-next " aria-label="Next page: Lab 3: Troubleshooting">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -481,7 +494,7 @@ c86415c03c37        8 days ago          /bin/sh -c <span class="hljs-comment">#(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Deploying a Change","level":"1.4.4","depth":2,"next":{"title":"IBM Developer ASEAN Team","level":"2.1","depth":1,"path":"team.md","ref":"team.md","articles":[]},"previous":{"title":"Run the Docker image and Push to a central registry","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step4.md","mtime":"2020-07-21T05:24:08.614Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T03:25:22.464Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Deploying a Change","level":"1.4.4","depth":2,"next":{"title":"Lab 3: Troubleshooting","level":"1.5","depth":1,"path":"lab3/lab3.md","ref":"lab3/lab3.md","articles":[]},"previous":{"title":"Run the Docker image and Push to a central registry","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step4.md","mtime":"2020-07-30T04:26:59.076Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T04:27:19.091Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
