@@ -1,0 +1,446 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Login to Docker Hub and Create a python app · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="step2.html" />
+    
+    
+    <link rel="prev" href="lab2.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">docker101 lab</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../lab0/lab0.html">
+            
+                <a href="../lab0/lab0.html">
+            
+                    
+                    Lab 0: Install Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../lab1/lab1.html">
+            
+                <a href="../lab1/lab1.html">
+            
+                    
+                    Lab 1: Run your first container
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../lab1/step1.html">
+            
+                <a href="../lab1/step1.html">
+            
+                    
+                    Run your first container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../lab1/step2.html">
+            
+                <a href="../lab1/step2.html">
+            
+                    
+                    Run Multiple Containers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../lab1/step3.html">
+            
+                <a href="../lab1/step3.html">
+            
+                    
+                    Clean Up
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="lab2.html">
+            
+                <a href="lab2.html">
+            
+                    
+                    Lab 2: Adding Value with Custom Docker Images
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="step1.html">
+            
+                <a href="step1.html">
+            
+                    
+                    Login to Docker Hub and Create a python app
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="step2.html">
+            
+                <a href="step2.html">
+            
+                    
+                    Create and build the Docker Image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="step3.html">
+            
+                <a href="step3.html">
+            
+                    
+                    Run the Docker image and Push to a central registry
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="step4.html">
+            
+                <a href="step4.html">
+            
+                    
+                    Deploying a Change
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../lab3/lab3.html">
+            
+                <a href="../lab3/lab3.html">
+            
+                    
+                    Lab 3: Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">IBM Developer</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../team.html">
+            
+                <a href="../team.html">
+            
+                    
+                    IBM Developer ASEAN Team
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Login to Docker Hub and Create a python app</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="lab-2--adding-value-with-custom-docker-images">Lab 2- Adding Value with Custom Docker Images</h1>
+<h3 id="login-to-docker-hub">Login to Docker Hub</h3>
+<ol>
+<li><p>Navigate to <a href="https://hub.docker.com" target="_blank">https://hub.docker.com</a> and create an account if you haven&apos;t already</p>
+<p> For this lab we will be using the docker hub as our central registry. Docker hub is a free service to store publicly available images, or you can pay to store private images. Go to the <a href="https://hub.docker.com" target="_blank">DockerHub</a> website and create a free account.</p>
+<p> Most organizations that use docker heavily will set up their own registry internally. To simplify things, we will be using the Docker Hub, but the following concepts apply to any registry.</p>
+</li>
+<li><p>Save your DockerHub username into a variable, so that you can copy/paste the rest of the commands for this lab. Replace the command below with your username.</p>
+<pre><code class="lang-sh"> <span class="hljs-built_in">export</span> DOCKER_USER=[docker username]
+</code></pre>
+</li>
+<li><p>Login</p>
+<p> You can log into the docker registry account by typing <code>docker login</code> on your terminal.</p>
+<pre><code class="lang-sh"> docker login -u <span class="hljs-variable">$DOCKER_USER</span>
+ Password:
+</code></pre>
+</li>
+</ol>
+<h2 id="step-1-create-a-python-app-without-using-docker">Step 1: Create a python app (without using Docker)</h2>
+<ol>
+<li><p>Create a folder for this project, If you are using a cloud shell use:</p>
+<pre><code class="lang-sh"> mkdir myapp
+ <span class="hljs-built_in">cd</span> myapp
+</code></pre>
+</li>
+<li><p>Run the following command to create a file named <code>app.py</code> with a simple python program. In Mac OS or Linux terminal, copy-paste the entire code block. For other operating systems, the file can be downloaded from this <a href="https://github.com/IraAngeles-IBM/docker101/tree/master/files" target="_blank">GitHub repository</a>. The files must be saved in the directory created above.</p>
+<pre><code class="lang-bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;from flask import Flask
+
+ app = Flask(__name__)
+
+ @app.route(&quot;/&quot;)
+ def hello():
+     return &quot;hello world!&quot;
+
+ if __name__ == &quot;__main__&quot;:
+     app.run(host=&quot;0.0.0.0&quot;)&apos;</span> &gt; app.py
+</code></pre>
+<p> This is a simple python app that uses flask to expose a http web server on port 5000 (5000 is the default port for flask). Don&apos;t worry if you are not too familiar with python or flask, these concepts can be applied to an application written in any language.</p>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="lab2.html" class="navigation navigation-prev " aria-label="Previous page: Lab 2: Adding Value with Custom Docker Images">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="step2.html" class="navigation navigation-next " aria-label="Next page: Create and build the Docker Image">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Login to Docker Hub and Create a python app","level":"1.4.1","depth":2,"next":{"title":"Create and build the Docker Image","level":"1.4.2","depth":2,"path":"lab2/step2.md","ref":"lab2/step2.md","articles":[]},"previous":{"title":"Lab 2: Adding Value with Custom Docker Images","level":"1.4","depth":1,"path":"lab2/lab2.md","ref":"lab2/lab2.md","articles":[{"title":"Login to Docker Hub and Create a python app","level":"1.4.1","depth":2,"path":"lab2/step1.md","ref":"lab2/step1.md","articles":[]},{"title":"Create and build the Docker Image","level":"1.4.2","depth":2,"path":"lab2/step2.md","ref":"lab2/step2.md","articles":[]},{"title":"Run the Docker image and Push to a central registry","level":"1.4.3","depth":2,"path":"lab2/step3.md","ref":"lab2/step3.md","articles":[]},{"title":"Deploying a Change","level":"1.4.4","depth":2,"path":"lab2/step4.md","ref":"lab2/step4.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab2/step1.md","mtime":"2020-07-30T05:45:01.303Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T07:38:55.439Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

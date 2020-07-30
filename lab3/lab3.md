@@ -51,3 +51,4 @@
     ```
 
 1. Remove image, type command `docker rmi [container ID or name]`
+
