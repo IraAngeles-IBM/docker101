@@ -8,7 +8,7 @@
 
     Most organizations that use docker heavily will set up their own registry internally. To simplify things, we will be using the Docker Hub, but the following concepts apply to any registry.
 
-1. Save your DockerHub username into a variable, so that you can copy/paste the rest of the commands for this lab. Replace the command below with your username.
+1. Save your DockerHub username into a variable, so that you can copy/paste the rest of the commands for this lab. Replace the command below with your username. Use command `export` for Mac OS and Linux, `set` for Windows or equivalent for your operating system.
 
     ```sh
     export DOCKER_USER=[docker username]
