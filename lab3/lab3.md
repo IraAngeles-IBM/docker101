@@ -8,7 +8,7 @@
     5fb192e83b28        isaias66/python-hello-world:v1   "python app.py"     4 seconds ago       Up 4 seconds        0.0.0.0:5000->5000/tcp   python-isaias66
     isaias@Isaiass-MBP myapp % 
     ```
-1. Display all containers whether running or not, type command **docker ps -a**
+1. Display all containers whether running or not, type command `docker ps -a`
 
     ```sh
     docker ps -a
