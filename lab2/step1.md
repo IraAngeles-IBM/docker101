@@ -32,7 +32,7 @@
     cd myapp
     ```
 
-1. Run the following command to create a file named `app.py` with a simple python program. In Mac OS or Linux terminal, copy-paste the entire code block.
+1. Run the following command to create a file named `app.py` with a simple python program. In Mac OS or Linux terminal, copy-paste the entire code block. For other operating systems, the file can be downloaded from this [GitHub repository](https://github.com/IraAngeles-IBM/docker101/blob/master/files/app.py). The files must be saved in the directory created above.
 
     ```bash
     echo 'from flask import Flask
