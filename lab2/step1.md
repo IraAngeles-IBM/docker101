@@ -32,7 +32,7 @@
     $ cd myapp
     ```
 
-1. Run the following command to create a file named `app.py` with a simple python program. (copy-paste the entire code block)
+1. Run the following command to create a file named `app.py` with a simple python program. In terminal, copy-paste the entire code block.
 
     ```bash
     echo 'from flask import Flask
@@ -40,9 +40,8 @@
     app = Flask(__name__)
 
     @app.route("/")
-
     def hello():
-    return "hello world!"
+        return "hello world!"
 
     if __name__ == "__main__":
         app.run(host="0.0.0.0")' > app.py
