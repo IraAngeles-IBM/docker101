@@ -1,6 +1,6 @@
 # Lab 3 - Troubleshooting and clean up
 
-1. Display running container type the command **docker container ls**
+1. Display running container type the command `docker container ls`
 
     ```sh
     isaias@Isaiass-MBP myapp % docker container ls
@@ -15,16 +15,16 @@
     ```
     ![docker ps](../images/dockerpsa.png)
 
-1. Display container logs, type the command **docker logs [container ID or name]**
+1. Display container logs, type the command `docker logs [container ID or name]`
 
     ```sh
     docker logs [conainter ID or name]
     ```
     ![docker logs](../images/dockerlogs.png)
 
-1. Display running process in Windows OS, type command **tasklist**
+1. Display running process in Windows OS, type command `tasklist`
 
-1. Display images, type command **docker images**
+1. Display images, type command `docker images`
 
     ```sh
     isaias@Isaiass-MBP myapp % docker images                                              
@@ -43,11 +43,11 @@
     isaias@Isaiass-MBP myapp % 
     ```
 
-1. Remove container, type command **docker rm [container ID or name]**
+1. Remove container, type command `docker rm [container ID or name]`
 
     ```sh
     isaias@Isaiass-MBP myapp % docker rm 797145c3f876  
     797145c3f876
     ```
 
-1. Remove image, type command **docker rmi [container ID or name]**
+1. Remove image, type command `docker rmi [container ID or name]`
