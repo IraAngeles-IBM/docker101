@@ -13,10 +13,10 @@ Now that you have built the image, you can run it to see that it works.
 
     The `-p` flag maps a port running inside the container to your host. In this case, we are mapping the python app running on port 5000 inside the container, to an external port on your host.
 
-1. curl `http://localhost:5000` to see the results. 
+1. `curl http://localhost:5000` to see the results or use web browser `http://localhost:5000`, if curl is not available in the envirnment.
 
-    ```sh
-    curl http://localhost:5000
+    ```zsh
+    isaias@Isaiass-MBP docker101 % curl http://localhost:5000
     $ hello world
     ```
 

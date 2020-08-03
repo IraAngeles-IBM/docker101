@@ -10,15 +10,14 @@ We are going to use the Docker CLI to run our first container.
 
     Use the `docker container run` command to run a container with the ubuntu image using the `top` command. The `-t` flags allocate a pseudo-TTY which we need for the `top` to work correctly.
 
-    This step is for **Play with Docker** environment.  Skip if using local docker installation.
+    This additional step is for **Play with Docker** environment.  Skip if using local docker installation:
 
-    ```sh
-    $ ssh 192.168.0.18
-    [node1] (local) root@192.168.0.18 ~
-    $ 
-    ```
+        ```sh
+        $ ssh 192.168.0.18
+        [node1] (local) root@192.168.0.18 ~
+        $ 
+        ```
 
-    This command is for local **Docker** environment
 
     ```bash
     $ docker container run -it ubuntu top
@@ -56,14 +55,16 @@ We are going to use the Docker CLI to run our first container.
 
     The `docker container exec` command is a way to "enter" a running container's namespaces with a new process.
 
-    Open a new terminal. To open a new terminal connected to node1 using play-with-docker.com, click "Add New Instance" on the lefthand side, then ssh from node2 into node1 using the IP that is listed by 'node1  '. For example:
+    This additional step is for **Play with Docker** environment.  Skip if using local docker installation:
 
-    ```sh
-    [node2] (local) root@192.168.0.17 ~
-    $ ssh 192.168.0.18
-    [node1] (local) root@192.168.0.18 ~
-    $
-    ```
+        Open a new terminal. To open a new terminal connected to node1 using play-with-docker.com, click "Add New Instance" on the lefthand side, then ssh from node2 into node1 using the IP that is listed by 'node1  '. For example:
+
+        ```sh
+        [node2] (local) root@192.168.0.17 ~
+        $ ssh 192.168.0.18
+        [node1] (local) root@192.168.0.18 ~
+        $
+        ```
 
     In the new terminal, use the `docker container ls` command to get the ID of the running container you just created.
 
