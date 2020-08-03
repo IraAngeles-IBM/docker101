@@ -20,6 +20,12 @@
     * [Reconciliation](lab3/step5.md)
 * [Troubleshooting](troubleshooting/troubleshooting.md)
 
+## Other Resources
+
+* [Get started with containers](https://developer.ibm.com/gettingstarted/containers/)
+* [Docker Documentation](https://docs.docker.com/)
+* [What is Containers and Dockers?](https://www.youtube.com/watch?v=JSLpG_spOBM)
+
 ## IBM Developer
 
 * [IBM Developer ASEAN Team](team.md)

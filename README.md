@@ -2,6 +2,10 @@
 
 Series of labs and instructions to introduce you to containers and Docker. Learn to run a container, inspect a container and understand the isolation of processes, create a Dockerfile, build an image from a Dockerfile and understand layers, tag and push images to a registry, scale and update containers, and more.
 
+## Video: Overview of Containerization 
+
+[![Create a crisis communication chatbot and connect it to news and COVID-19 data sources ](https://img.youtube.com/vi/0qotVMX-J5s/hqdefault.jpg)](https://youtu.be/0qotVMX-J5s)
+
 ## Agenda
 
 - lab0 - [Install Docker](lab0/lab0.md)
