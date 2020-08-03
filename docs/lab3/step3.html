@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Troubleshooting · GitBook</title>
+        <title>Scale your service · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../team.html" />
+    <link rel="next" href="step4.html" />
     
     
-    <link rel="prev" href="../lab3/step5.html" />
+    <link rel="prev" href="step2.html" />
     
 
     </head>
@@ -246,9 +246,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../lab3/lab3.html">
+        <li class="chapter " data-level="1.5" data-path="lab3.html">
             
-                <a href="../lab3/lab3.html">
+                <a href="lab3.html">
             
                     
                     Lab 3: Introduction to Orchestration
@@ -260,9 +260,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../lab3/step1.html">
+        <li class="chapter " data-level="1.5.1" data-path="step1.html">
             
-                <a href="../lab3/step1.html">
+                <a href="step1.html">
             
                     
                     Create your first swarm
@@ -273,9 +273,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../lab3/step2.html">
+        <li class="chapter " data-level="1.5.2" data-path="step2.html">
             
-                <a href="../lab3/step2.html">
+                <a href="step2.html">
             
                     
                     Deploy your first service
@@ -286,9 +286,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../lab3/step3.html">
+        <li class="chapter active" data-level="1.5.3" data-path="step3.html">
             
-                <a href="../lab3/step3.html">
+                <a href="step3.html">
             
                     
                     Scale your service
@@ -299,9 +299,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="../lab3/step4.html">
+        <li class="chapter " data-level="1.5.4" data-path="step4.html">
             
-                <a href="../lab3/step4.html">
+                <a href="step4.html">
             
                     
                     Rolling Updates
@@ -312,9 +312,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="../lab3/step5.html">
+        <li class="chapter " data-level="1.5.5" data-path="step5.html">
             
-                <a href="../lab3/step5.html">
+                <a href="step5.html">
             
                     
                     Reconciliation
@@ -330,9 +330,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="troubleshooting.html">
+        <li class="chapter " data-level="1.6" data-path="../troubleshooting/troubleshooting.html">
             
-                <a href="troubleshooting.html">
+                <a href="../troubleshooting/troubleshooting.html">
             
                     
                     Troubleshooting
@@ -393,7 +393,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Troubleshooting</a>
+        <a href=".." >Scale your service</a>
     </h1>
 </div>
 
@@ -408,50 +408,79 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="lab-3---troubleshooting-and-clean-up">Lab 3 - Troubleshooting and clean up</h1>
+                                <h1 id="lab-3--introduction-to-orchestration">Lab 3- Introduction to Orchestration</h1>
+<h2 id="step-3-scale-your-service">Step 3: Scale your service</h2>
+<p>In production we may need to handle large amounts of traffic to our application. So let&apos;s scale!</p>
 <ol>
-<li><p>Display running container type the command <code>docker container ls</code></p>
-<pre><code class="lang-sh"> isaias@Isaiass-MBP myapp % docker container ls
- CONTAINER ID        IMAGE                            COMMAND             CREATED             STATUS              PORTS                    NAMES
- 5fb192e83b28        isaias66/python-hello-world:v1   <span class="hljs-string">&quot;python app.py&quot;</span>     4 seconds ago       Up 4 seconds        0.0.0.0:5000-&gt;5000/tcp   python-isaias66
- isaias@Isaiass-MBP myapp %
+<li><p>Update your service with an updated number of replicas</p>
+<p> We are going to use the <code>docker service</code> command to update the nginx service we created earlier to include 5 replicas. This is defining a new state for our service.</p>
+<pre><code class="lang-sh"> $ docker service update --replicas=5 --detach=<span class="hljs-literal">true</span> nginx1
+ nginx1
+</code></pre>
+<p> As soon as this command is run the following happens:</p>
+<ol>
+<li>The state of the service is updated to 5 replicas (which is stored in the swarms internal storage).</li>
+<li>Docker swarm recognizes that the number of replicas that is scheduled now does not match the declared state of 5.</li>
+<li><p>Docker swarm schedules 5 more tasks (containers) in an attempt to meet the declared state for the service.</p>
+<p>This swarm is actively checking to see if the desired state is equal to actual state, and will attempt to reconcile if needed.</p>
+</li>
+</ol>
+</li>
+<li><p>Check the running instances</p>
+<p> After a few seconds, you should see that the swarm did its job, and successfully started 9 more containers. Notice that the containers are scheduled across all three nodes of the cluster. The default placement strategy that is used to decide where new containers are to be run is &quot;emptiest node&quot;, but that can be changed based on your need.</p>
+<pre><code class="lang-sh"> $ docker service ps nginx1
+ ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STAT
+ E            ERROR               PORTS
+ iu3ksewv7qf9        nginx1.1            nginx:1.12          node1               Running             Running 17 m
+ inutes ago
+ lfz1bhl6v77r        nginx1.2            nginx:1.12          node2               Running             Running 6 mi
+ nutes ago
+ qururb043dwh        nginx1.3            nginx:1.12          node3               Running             Running 6 mi
+ nutes ago
+ q53jgeeq7y1x        nginx1.4            nginx:1.12          node3               Running             Running 6 mi
+ nutes ago
+ xj271k2829uz        nginx1.5            nginx:1.12          node1               Running             Running 7 mi
+ nutes ago
 </code></pre>
 </li>
-<li><p>Display all containers whether running or not, type command <code>docker ps -a</code></p>
-<pre><code class="lang-sh"> docker ps <span class="hljs-_">-a</span>
-</code></pre>
-<p> <img src="../images/dockerpsa.png" alt="docker ps"></p>
-</li>
-<li><p>Display container logs, type the command <code>docker logs [container ID or name]</code></p>
-<pre><code class="lang-sh"> docker logs [conainter ID or name]
-</code></pre>
-<p> <img src="../images/dockerlogs.png" alt="docker logs"></p>
-</li>
-<li><p>Display running process in Windows OS, type command <code>tasklist</code></p>
-</li>
-<li><p>Display images, type command <code>docker images</code></p>
-<pre><code class="lang-sh"> isaias@Isaiass-MBP myapp % docker images                                              
- REPOSITORY                    TAG                     IMAGE ID            CREATED             SIZE
- isaias66/python-hello-world   v1                      de562dbffc72        2 hours ago         98.5MB
- isaias66/python-hello-world   v2                      de562dbffc72        2 hours ago         98.5MB
- &lt;none&gt;                        &lt;none&gt;                  2dc449fdbe65        2 hours ago         98.5MB
- isaias66/python-hello-world   v3                      1a72ba98439e        22 hours ago        98.5MB
- ubuntu                        latest                  1e4467b07108        5 days ago          73.9MB
- nginx                         latest                  8cf1bfb43ff5        8 days ago          132MB
- gatsby                        latest                  a2b02ae6fb40        3 weeks ago         245MB
- alpine                        latest                  a24bb4013296        2 months ago        5.57MB
- icr.io/obs/hdm/db2wh_ee       v11.5.3.0-db2wh-linux   5337afff621b        3 months ago        7.71GB
- mongo                         3.4                     f76f959b2a49        6 months ago        431MB
- python                        3.6.1-alpine            ddd6300d05a3        3 years ago         88.7MB
- isaias@Isaiass-MBP myapp %
+<li><p>Send a bunch of requests to <a href="http://localhost:80" target="_blank">localhost:80</a></p>
+<p> The <code>--publish 80:80</code> is still in effect for this service, that was not changed when we ran <code>docker service update</code>. However, now when we send requests on port 80, the routing mesh has multiple containers in which to route requests to. The routing mesh acts as a load balancer for these containers, alternating where it routes requests to.</p>
+<p> Let&apos;s try it out by curling multiple times. Note, that it doesn&apos;t matter which node you send the requests. There is no connection between the node that receives the request, and the node that that request is routed to.</p>
+<pre><code class="lang-sh"> $ curl localhost:80
+ node3
+ $ curl localhost:80
+ node3
+ $ curl localhost:80
+ node2
+ $ curl localhost:80
+ node1
+ $ curl localhost:80
+ node1
 </code></pre>
 </li>
-<li><p>Remove container, type command <code>docker rm [container ID or name]</code></p>
-<pre><code class="lang-sh"> isaias@Isaiass-MBP myapp % docker rm 797145c3f876  
- 797145c3f876
+</ol>
+<p>You should see which node is serving each request because of the nifty <code>--mount</code> command we used earlier.</p>
+<p><strong>Limits of the routing Mesh</strong>
+The routing mesh can only publish one service on port 80. If you want multiple services exposed on port 80, then you can use an external application load balancer outside of the swarm to accomplish this.</p>
+<ol>
+<li><p>Check the aggregated logs for the service</p>
+<p> Another easy way to see which nodes those requests were routed to is to check the aggregated logs. We can get aggregated logs for the service using <code>docker service logs [service name]</code>. This aggregates the output from every running container, i.e. the output from <code>docker container logs [container name]</code>.</p>
+<pre><code class="lang-sh"> $ docker service logs nginx1
+ nginx1.4.q53jgeeq7y1x@node3    | 10.255.0.2 - - [28/Jun/2017:18:59:39 +0000] <span class="hljs-string">&quot;GET / HTTP/1.1&quot;</span> 200 6 <span class="hljs-string">&quot;-&quot;</span> <span class="hljs-string">&quot;curl/7.
+ 52.1&quot;</span> <span class="hljs-string">&quot;-&quot;</span>
+ nginx1.2.lfz1bhl6v77r@node2    | 10.255.0.2 - - [28/Jun/2017:18:59:40 +0000] <span class="hljs-string">&quot;GET / HTTP/1.1&quot;</span> 200 6 <span class="hljs-string">&quot;-&quot;</span> <span class="hljs-string">&quot;curl/7.
+ 52.1&quot;</span> <span class="hljs-string">&quot;-&quot;</span>
+ nginx1.5.xj271k2829uz@node1    | 10.255.0.2 - - [28/Jun/2017:18:59:41 +0000] <span class="hljs-string">&quot;GET / HTTP/1.1&quot;</span> 200 6 <span class="hljs-string">&quot;-&quot;</span> <span class="hljs-string">&quot;curl/7.
+ 52.1&quot;</span> <span class="hljs-string">&quot;-&quot;</span>
+ nginx1.1.iu3ksewv7qf9@node1    | 10.255.0.2 - - [28/Jun/2017:18:50:23 +0000] <span class="hljs-string">&quot;GET / HTTP/1.1&quot;</span> 200 6 <span class="hljs-string">&quot;-&quot;</span> <span class="hljs-string">&quot;curl/7.
+ 52.1&quot;</span> <span class="hljs-string">&quot;-&quot;</span>
+ nginx1.1.iu3ksewv7qf9@node1    | 10.255.0.2 - - [28/Jun/2017:18:59:41 +0000] <span class="hljs-string">&quot;GET / HTTP/1.1&quot;</span> 200 6 <span class="hljs-string">&quot;-&quot;</span> <span class="hljs-string">&quot;curl/7.
+ 52.1&quot;</span> <span class="hljs-string">&quot;-&quot;</span>
+ nginx1.3.qururb043dwh@node3    | 10.255.0.2 - - [28/Jun/2017:18:59:38 +0000] <span class="hljs-string">&quot;GET / HTTP/1.1&quot;</span> 200 6 <span class="hljs-string">&quot;-&quot;</span> <span class="hljs-string">&quot;curl/7.
+ 52.1&quot;</span> <span class="hljs-string">&quot;-&quot;</span>
 </code></pre>
-</li>
-<li><p>Remove image, type command <code>docker rmi [container ID or name]</code></p>
+<p> Based on these logs we can see that each request was served by a different container.</p>
+<p> In addition to seeing whether the request was sent to node1, node2, or node3, you can also see which container on each node that it was sent to. For example <code>nginx1.5</code> means that request was sent to container with that same name as indicated in the output of <code>docker service ps nginx1</code>.</p>
 </li>
 </ol>
 
@@ -481,12 +510,12 @@
 
             
                 
-                <a href="../lab3/step5.html" class="navigation navigation-prev " aria-label="Previous page: Reconciliation">
+                <a href="step2.html" class="navigation navigation-prev " aria-label="Previous page: Deploy your first service">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../team.html" class="navigation navigation-next " aria-label="Next page: IBM Developer ASEAN Team">
+                <a href="step4.html" class="navigation navigation-next " aria-label="Next page: Rolling Updates">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -497,7 +526,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"1.6","depth":1,"next":{"title":"IBM Developer ASEAN Team","level":"2.1","depth":1,"path":"team.md","ref":"team.md","articles":[]},"previous":{"title":"Reconciliation","level":"1.5.5","depth":2,"path":"lab3/step5.md","ref":"lab3/step5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"troubleshooting/troubleshooting.md","mtime":"2020-08-03T06:14:21.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-03T06:47:26.315Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Scale your service","level":"1.5.3","depth":2,"next":{"title":"Rolling Updates","level":"1.5.4","depth":2,"path":"lab3/step4.md","ref":"lab3/step4.md","articles":[]},"previous":{"title":"Deploy your first service","level":"1.5.2","depth":2,"path":"lab3/step2.md","ref":"lab3/step2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab3/step3.md","mtime":"2020-08-03T06:41:24.972Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-03T06:47:26.315Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

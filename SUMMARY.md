@@ -12,6 +12,12 @@
     * [Create and build the Docker Image](lab2/step2.md)
     * [Run the Docker image and Push to a central registry](lab2/step3.md)
     * [Deploying a Change](lab2/step4.md)
+* [Lab 3: Introduction to Orchestration](lab3/lab3.md)
+    * [Create your first swarm](lab3/step1.md)
+    * [Deploy your first service](lab3/step2.md)
+    * [Scale your service](lab3/step3.md)
+    * [Rolling Updates](lab3/step4.md)
+    * [Reconciliation](lab3/step5.md)
 * [Troubleshooting](troubleshooting/troubleshooting.md)
 
 ## IBM Developer

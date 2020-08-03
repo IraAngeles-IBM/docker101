@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Troubleshooting · GitBook</title>
+        <title>Rolling Updates · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../team.html" />
+    <link rel="next" href="step5.html" />
     
     
-    <link rel="prev" href="../lab3/step5.html" />
+    <link rel="prev" href="step3.html" />
     
 
     </head>
@@ -246,9 +246,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../lab3/lab3.html">
+        <li class="chapter " data-level="1.5" data-path="lab3.html">
             
-                <a href="../lab3/lab3.html">
+                <a href="lab3.html">
             
                     
                     Lab 3: Introduction to Orchestration
@@ -260,9 +260,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../lab3/step1.html">
+        <li class="chapter " data-level="1.5.1" data-path="step1.html">
             
-                <a href="../lab3/step1.html">
+                <a href="step1.html">
             
                     
                     Create your first swarm
@@ -273,9 +273,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../lab3/step2.html">
+        <li class="chapter " data-level="1.5.2" data-path="step2.html">
             
-                <a href="../lab3/step2.html">
+                <a href="step2.html">
             
                     
                     Deploy your first service
@@ -286,9 +286,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../lab3/step3.html">
+        <li class="chapter " data-level="1.5.3" data-path="step3.html">
             
-                <a href="../lab3/step3.html">
+                <a href="step3.html">
             
                     
                     Scale your service
@@ -299,9 +299,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="../lab3/step4.html">
+        <li class="chapter active" data-level="1.5.4" data-path="step4.html">
             
-                <a href="../lab3/step4.html">
+                <a href="step4.html">
             
                     
                     Rolling Updates
@@ -312,9 +312,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="../lab3/step5.html">
+        <li class="chapter " data-level="1.5.5" data-path="step5.html">
             
-                <a href="../lab3/step5.html">
+                <a href="step5.html">
             
                     
                     Reconciliation
@@ -330,9 +330,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="troubleshooting.html">
+        <li class="chapter " data-level="1.6" data-path="../troubleshooting/troubleshooting.html">
             
-                <a href="troubleshooting.html">
+                <a href="../troubleshooting/troubleshooting.html">
             
                     
                     Troubleshooting
@@ -393,7 +393,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Troubleshooting</a>
+        <a href=".." >Rolling Updates</a>
     </h1>
 </div>
 
@@ -408,52 +408,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="lab-3---troubleshooting-and-clean-up">Lab 3 - Troubleshooting and clean up</h1>
-<ol>
-<li><p>Display running container type the command <code>docker container ls</code></p>
-<pre><code class="lang-sh"> isaias@Isaiass-MBP myapp % docker container ls
- CONTAINER ID        IMAGE                            COMMAND             CREATED             STATUS              PORTS                    NAMES
- 5fb192e83b28        isaias66/python-hello-world:v1   <span class="hljs-string">&quot;python app.py&quot;</span>     4 seconds ago       Up 4 seconds        0.0.0.0:5000-&gt;5000/tcp   python-isaias66
- isaias@Isaiass-MBP myapp %
+                                <h1 id="lab-3--introduction-to-orchestration">Lab 3- Introduction to Orchestration</h1>
+<h2 id="step-4-rolling-updates">Step 4: Rolling Updates</h2>
+<p>Now that we have our service deployed, let&apos;s demonstrate a release of our application. We are going to update the version of Nginx to version &quot;1.13&quot;. To do this update we are going to use the <code>docker service update</code> command.</p>
+<pre><code class="lang-sh">$ docker service update --image nginx:1.13 --detach=<span class="hljs-literal">true</span> nginx1
+1a2b3c
 </code></pre>
-</li>
-<li><p>Display all containers whether running or not, type command <code>docker ps -a</code></p>
-<pre><code class="lang-sh"> docker ps <span class="hljs-_">-a</span>
+<p>This will trigger a rolling update of the swarm. Quickly type in <code>docker service ps nginx1</code> over and over to see the updates in real time.</p>
+<p>You can fine tune the rolling update using these options:</p>
+<ul>
+<li><code>--update-parallelism</code> will dictate the number of containers to update at once. (defaults to 1)</li>
+<li><code>--update-delay</code> will dictate the delay between finishing updating a set of containers before moving on to the next set.</li>
+</ul>
+<p>After a few seconds, run <code>docker service ps nginx1</code> to see all the images have been updated to nginx:1.13.</p>
+<pre><code class="lang-sh">$ docker service ps nginx1
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STAT
+E             ERROR               PORTS
+di2hmdpw0j0z        nginx1.1            nginx:1.13          node1               Running             Running 50 s
+econds ago
+iu3ksewv7qf9         \_ nginx1.1        nginx:1.12          node1               Shutdown            Shutdown 52
+seconds ago
+qsk6gw43fgfr        nginx1.2            nginx:1.13          node2               Running             Running 47 s
+econds ago
+lfz1bhl6v77r         \_ nginx1.2        nginx:1.12          node2               Shutdown            Shutdown 49
+seconds ago
+r4429oql42z9        nginx1.3            nginx:1.13          node3               Running             Running 41 s
+econds ago
+qururb043dwh         \_ nginx1.3        nginx:1.12          node3               Shutdown            Shutdown 43
+seconds ago
+jfkepz8tqy9g        nginx1.4            nginx:1.13          node2               Running             Running 44 s
+econds ago
+q53jgeeq7y1x         \_ nginx1.4        nginx:1.12          node3               Shutdown            Shutdown 45
+seconds ago
+n15o01ouv2uf        nginx1.5            nginx:1.13          node3               Running             Running 39 s
+econds ago
+xj271k2829uz         \_ nginx1.5        nginx:1.12          node1               Shutdown            Shutdown 40
+seconds ago
 </code></pre>
-<p> <img src="../images/dockerpsa.png" alt="docker ps"></p>
-</li>
-<li><p>Display container logs, type the command <code>docker logs [container ID or name]</code></p>
-<pre><code class="lang-sh"> docker logs [conainter ID or name]
-</code></pre>
-<p> <img src="../images/dockerlogs.png" alt="docker logs"></p>
-</li>
-<li><p>Display running process in Windows OS, type command <code>tasklist</code></p>
-</li>
-<li><p>Display images, type command <code>docker images</code></p>
-<pre><code class="lang-sh"> isaias@Isaiass-MBP myapp % docker images                                              
- REPOSITORY                    TAG                     IMAGE ID            CREATED             SIZE
- isaias66/python-hello-world   v1                      de562dbffc72        2 hours ago         98.5MB
- isaias66/python-hello-world   v2                      de562dbffc72        2 hours ago         98.5MB
- &lt;none&gt;                        &lt;none&gt;                  2dc449fdbe65        2 hours ago         98.5MB
- isaias66/python-hello-world   v3                      1a72ba98439e        22 hours ago        98.5MB
- ubuntu                        latest                  1e4467b07108        5 days ago          73.9MB
- nginx                         latest                  8cf1bfb43ff5        8 days ago          132MB
- gatsby                        latest                  a2b02ae6fb40        3 weeks ago         245MB
- alpine                        latest                  a24bb4013296        2 months ago        5.57MB
- icr.io/obs/hdm/db2wh_ee       v11.5.3.0-db2wh-linux   5337afff621b        3 months ago        7.71GB
- mongo                         3.4                     f76f959b2a49        6 months ago        431MB
- python                        3.6.1-alpine            ddd6300d05a3        3 years ago         88.7MB
- isaias@Isaiass-MBP myapp %
-</code></pre>
-</li>
-<li><p>Remove container, type command <code>docker rm [container ID or name]</code></p>
-<pre><code class="lang-sh"> isaias@Isaiass-MBP myapp % docker rm 797145c3f876  
- 797145c3f876
-</code></pre>
-</li>
-<li><p>Remove image, type command <code>docker rmi [container ID or name]</code></p>
-</li>
-</ol>
+<p>You have successfully updated your app to the latest version of nginx!</p>
 
                                 
                                 </section>
@@ -481,12 +473,12 @@
 
             
                 
-                <a href="../lab3/step5.html" class="navigation navigation-prev " aria-label="Previous page: Reconciliation">
+                <a href="step3.html" class="navigation navigation-prev " aria-label="Previous page: Scale your service">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../team.html" class="navigation navigation-next " aria-label="Next page: IBM Developer ASEAN Team">
+                <a href="step5.html" class="navigation navigation-next " aria-label="Next page: Reconciliation">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -497,7 +489,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"1.6","depth":1,"next":{"title":"IBM Developer ASEAN Team","level":"2.1","depth":1,"path":"team.md","ref":"team.md","articles":[]},"previous":{"title":"Reconciliation","level":"1.5.5","depth":2,"path":"lab3/step5.md","ref":"lab3/step5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"troubleshooting/troubleshooting.md","mtime":"2020-08-03T06:14:21.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-03T06:47:26.315Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Rolling Updates","level":"1.5.4","depth":2,"next":{"title":"Reconciliation","level":"1.5.5","depth":2,"path":"lab3/step5.md","ref":"lab3/step5.md","articles":[]},"previous":{"title":"Scale your service","level":"1.5.3","depth":2,"path":"lab3/step3.md","ref":"lab3/step3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab3/step4.md","mtime":"2020-08-03T06:42:08.230Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-03T06:47:26.315Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
