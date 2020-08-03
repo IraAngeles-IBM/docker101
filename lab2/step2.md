@@ -15,7 +15,6 @@ If you don't have python install locally, don't worry! Because you don't need it
 
     A Dockerfile lists the instructions needed to build a docker image. Let's go through the above file line by line.
 
-
     **FROM python:3.6.1-alpine**
 
     This is the starting point for your Dockerfile. Every Dockerfile must start with a `FROM` line that is the starting image to build your layers on top of. In this case, we are selecting the `python:3.6.1-alpine` base layer since it already has the version of python and pip that we need to run our application. The `alpine` version means that it uses the alpine distribution, which is significantly smaller than an alternative flavor of linux. A smaller image means it will download (deploy) much faster, and it also has advantages for security because it has a smaller attack surface.
