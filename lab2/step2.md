@@ -4,7 +4,7 @@
 
 If you don't have python install locally, don't worry! Because you don't need it. One of the advantages of using Docker containers is that you can build python into your containers, without having python installed on your host. 
 
-1. Create a `Dockerfile` but running the following command. Using any code editor (e.g. VScode, Atom, Sublime, etc), copy-paste the entire code block. Or download `Dockerfile` from [GitHub repository](https://github.com/IraAngeles-IBM/docker101/tree/master/files). The files must be saved in the directory created above.
+1. Create a `Dockerfile`.  Use any code editor (e.g. VScode, Atom, Sublime, etc), then, copy-paste the entire code block. Or download `Dockerfile` from [GitHub repository](https://github.com/IraAngeles-IBM/docker101/tree/master/files). The files must be saved in the directory created above.
 
     ```DockerFile
     FROM python:3.6.1-alpine
