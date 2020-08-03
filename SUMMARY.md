@@ -22,6 +22,7 @@
 
 ## Other Resources
 
+* [Container & Kubernetes Essentials](https://cognitiveclass.ai/learn/containers-k8s-and-istio-on-ibm-cloud)
 * [Get started with containers](https://developer.ibm.com/gettingstarted/containers/)
 * [Docker Documentation](https://docs.docker.com/)
 * [What is Containers and Dockers?](https://www.youtube.com/watch?v=JSLpG_spOBM)
