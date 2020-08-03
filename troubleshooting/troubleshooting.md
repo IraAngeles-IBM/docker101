@@ -1,6 +1,6 @@
 # Troubleshooting and clean up
 
-1. Display available commands in `docker`, type the command `docker --help`
+1. Display available commands in `docker`, type the command `docker` or `docker --help`
 
     ```zsh
     isaias@Isaiass-MBP CODE_PATTERNS % docker --help
@@ -16,7 +16,7 @@
     -D, --debug              Enable debug mode
 
     ....
-    
+
     -v, --version            Print version information and quit
 
     Management Commands:

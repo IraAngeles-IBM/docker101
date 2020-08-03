@@ -1,4 +1,4 @@
-# Lab 3- Introduction to Orchestration
+# Lab 3 - Introduction to Orchestration
 
 ## Overview
 

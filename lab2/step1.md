@@ -1,4 +1,4 @@
-# Lab 2- Adding Value with Custom Docker Images
+# Lab 2 - Adding Value with Custom Docker Images
 
 ### Login to Docker Hub
 

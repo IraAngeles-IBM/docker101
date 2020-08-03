@@ -1,4 +1,4 @@
-# Lab 3- Introduction to Orchestration
+# Lab 3 - Introduction to Orchestration
 
 ## Step 2: Deploy your first service
 

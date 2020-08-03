@@ -1,4 +1,4 @@
-# Lab 2- Adding Value with Custom Docker Images
+# Lab 2 - Adding Value with Custom Docker Images
 
 ## Step 2: Create and build the Docker Image
 
