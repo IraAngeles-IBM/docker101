@@ -47,7 +47,7 @@ If you don't have python install locally, don't worry! Because you don't need it
   >>    And there you have it: a very simple Dockerfile. A full list of commands you can put into a Dockerfile can be found [here](https://docs.docker.com/engine/reference/builder/). Now that we defined our Dockerfile, let's use it to build our custom docker image.
 
 
-1. Build the docker image. 
+2. Build the docker image. 
 
     Pass in `-t` to name your image `$DOCKER_USER/python-hello-world`, with the tag `v1` to indicate this is the first version of the image
 
