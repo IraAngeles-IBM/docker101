@@ -11,7 +11,7 @@ Series of labs and instructions to introduce you to containers and Docker. Learn
 - lab0 - [Install Docker](lab0/lab0.md)
 - lab1 - [Run your first container](lab1/lab1.md)
 - lab2 - [Add value with custom images](lab2/lab2.md)
-
+- lab3 - [Introduction to Orchestration](lab3/lab3.md)
 ---
 © Copyright IBM Corporation 2017
 
