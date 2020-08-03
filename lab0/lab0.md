@@ -11,6 +11,7 @@ For this workshop you must have:
 - Docker CLI,
 - Docker Engine,
 - Docker Registry account (Docker ID)
+- basic knowledge of Linux
 
 ## Step 1: Install Docker
 
