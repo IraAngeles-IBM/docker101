@@ -1,4 +1,41 @@
-# Lab 3 - Troubleshooting and clean up
+# Troubleshooting and clean up
+
+1. Display available commands in `docker`, type the command `docker --help`
+
+    ```zsh
+    isaias@Isaiass-MBP CODE_PATTERNS % docker --help
+
+    Usage:	docker [OPTIONS] COMMAND
+
+    A self-sufficient runtime for containers
+
+    Options:
+        --config string      Location of client config files (default "/Users/isaias/.docker")
+    -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST
+                            env var and default context set with "docker context use")
+    -D, --debug              Enable debug mode
+
+    ....
+    
+    -v, --version            Print version information and quit
+
+    Management Commands:
+    builder     Manage builds
+    config      Manage Docker configs
+    container   Manage containers
+    context     Manage contexts
+
+    .....
+
+    Commands:
+    attach      Attach local standard input, output, and error streams to a running container
+    build       Build an image from a Dockerfile
+
+    ....
+
+    Run 'docker COMMAND --help' for more information on a command.
+    isaias@Isaiass-MBP CODE_PATTERNS % 
+    ```
 
 1. Display running container type the command `docker container ls`
 

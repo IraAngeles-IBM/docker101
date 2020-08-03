@@ -465,8 +465,43 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="lab-3---troubleshooting-and-clean-up">Lab 3 - Troubleshooting and clean up</h1>
+                                <h1 id="troubleshooting-and-clean-up">Troubleshooting and clean up</h1>
 <ol>
+<li><p>Display available commands in <code>docker</code>, type the command <code>docker --help</code></p>
+<pre><code class="lang-zsh"> isaias@Isaiass-MBP CODE_PATTERNS % docker --help
+
+ Usage:    docker [OPTIONS] COMMAND
+
+ A self-sufficient runtime <span class="hljs-keyword">for</span> containers
+
+ Options:
+     --config string      Location of client config files (default <span class="hljs-string">&quot;/Users/isaias/.docker&quot;</span>)
+ -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST
+                         env var and default context <span class="hljs-built_in">set</span> with <span class="hljs-string">&quot;docker context use&quot;</span>)
+ -D, --debug              Enable debug mode
+
+ ....
+
+ -v, --version            Print version information and quit
+
+ Management Commands:
+ builder     Manage builds
+ config      Manage Docker configs
+ container   Manage containers
+ context     Manage contexts
+
+ .....
+
+ Commands:
+ attach      Attach <span class="hljs-built_in">local</span> standard input, output, and error streams to a running container
+ build       Build an image from a Dockerfile
+
+ ....
+
+ Run <span class="hljs-string">&apos;docker COMMAND --help&apos;</span> <span class="hljs-keyword">for</span> more information on a command.
+ isaias@Isaiass-MBP CODE_PATTERNS %
+</code></pre>
+</li>
 <li><p>Display running container type the command <code>docker container ls</code></p>
 <pre><code class="lang-sh"> isaias@Isaiass-MBP myapp % docker container ls
  CONTAINER ID        IMAGE                            COMMAND             CREATED             STATUS              PORTS                    NAMES
@@ -550,7 +585,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"1.6","depth":1,"next":{"title":"Container & Kubernetes Essentials","level":"2.1","depth":1,"url":"https://cognitiveclass.ai/learn/containers-k8s-and-istio-on-ibm-cloud","ref":"https://cognitiveclass.ai/learn/containers-k8s-and-istio-on-ibm-cloud","articles":[]},"previous":{"title":"Reconciliation","level":"1.5.5","depth":2,"path":"lab3/step5.md","ref":"lab3/step5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"troubleshooting/troubleshooting.md","mtime":"2020-08-03T06:14:21.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-03T07:26:38.867Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"1.6","depth":1,"next":{"title":"Container & Kubernetes Essentials","level":"2.1","depth":1,"url":"https://cognitiveclass.ai/learn/containers-k8s-and-istio-on-ibm-cloud","ref":"https://cognitiveclass.ai/learn/containers-k8s-and-istio-on-ibm-cloud","articles":[]},"previous":{"title":"Reconciliation","level":"1.5.5","depth":2,"path":"lab3/step5.md","ref":"lab3/step5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"troubleshooting/troubleshooting.md","mtime":"2020-08-03T07:32:52.206Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-03T07:33:00.354Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
