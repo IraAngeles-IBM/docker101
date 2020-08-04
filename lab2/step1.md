@@ -32,7 +32,7 @@
     cd myapp
     ```
 
-1. Download `app.py` python code from [GitHub repository](https://github.com/IraAngeles-IBM/docker101/tree/master/files). The files must be saved in the directory created above.
+1. Download `app.py` python code from [GitHub repository](https://github.com/IraAngeles-IBM/docker101/tree/master/files). The files must be saved in the directory previously created. There's no need to install python and this is where you can experience running a python program without installing it in your system.
 
     ```py
     from flask import Flask
