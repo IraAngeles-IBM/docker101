@@ -87,5 +87,11 @@
     797145c3f876
     ```
 
-1. Remove image, type command `docker rmi [container ID or name]`
+1. Remove image, type command `docker rmi [container ID or name]`. Container image will not be deleted if there is existing container using it. Argument `--force` can be added to force it to delete the container and image at the same time.  Otherwise, stop and delete the container accordingly.
 
+    ```sh
+    isaias@Isaiass-MBP myapp % docker rmi 3cf3742be7b8  --force
+    Untagged: isaias66/python-hello-world:v1
+    Untagged: isaias66/python-hello-world:v4
+    Deleted: sha256:3cf3742be7b8078322cc78bb899639763638dfe656d5a6e50f5ef405445e0fc2
+    ```
