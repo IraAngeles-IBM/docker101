@@ -34,18 +34,7 @@
 
 1. Download `app.py` python code from [GitHub repository](https://github.com/IraAngeles-IBM/docker101/tree/master/files). The files must be saved in the directory previously created. There's no need to install python and this is where you can experience running a python program without installing it in your system.
 
-    ```py
-    from flask import Flask
-
-    app = Flask(__name__)
-
-    @app.route("/")
-    def hello():
-        return "hello world!"
-
-    if __name__ == "__main__":
-        app.run(host="0.0.0.0")
-    ```
+    ![appy py](images/app_py.png)
 
     This is a simple python app that uses flask to expose a http web server on port 5000 (5000 is the default port for flask). Don't worry if you are not too familiar with python or flask, these concepts can be applied to an application written in any language.
 
