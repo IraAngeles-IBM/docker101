@@ -121,4 +121,8 @@ We are going to use the Docker CLI to run our first container.
 
     In additional to running linux containers on Windows using a linux subsystem, native Windows containers are now possible due the creation of container primitives on the Windows OS. Native Windows containers can be run on Windows 10 or Windows Server 2016 or newer.
 
+    Try the following command within the container `lsns`:
+
+    ![lsns](../images/linux_namespace.png)
+
 1. Clean up the container running the `top` processes by typing: `<ctrl>-c.`
