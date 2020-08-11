@@ -12,12 +12,11 @@ We are going to use the Docker CLI to run our first container.
 
     This additional step is for **Play with Docker** environment.  Skip if using local docker installation:
 
-        ```sh
-        $ ssh 192.168.0.18
-        [node1] (local) root@192.168.0.18 ~
-        $ 
-        ```
-
+    ```sh
+    $ ssh 192.168.0.18
+    [node1] (local) root@192.168.0.18 ~
+    $ 
+    ```
 
     ```bash
     $ docker container run -it ubuntu top

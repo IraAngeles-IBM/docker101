@@ -502,45 +502,35 @@
 <li><p>Run <code>docker container run -t ubuntu top</code></p>
 <p> Use the <code>docker container run</code> command to run a container with the ubuntu image using the <code>top</code> command. The <code>-t</code> flags allocate a pseudo-TTY which we need for the <code>top</code> to work correctly.</p>
 <p> This additional step is for <strong>Play with Docker</strong> environment.  Skip if using local docker installation:</p>
-<pre><code> ```sh
- $ ssh 192.168.0.18
- [node1] (local) root@192.168.0.18 ~
- $ 
- ```
-</code></pre></li>
-</ol>
-<pre><code>```bash
-$ docker container run -it ubuntu top
-Unable to find image &apos;ubuntu:latest&apos; locally
-latest: Pulling from library/ubuntu
-aafe6b5e13de: Pull complete
-0a2b43a72660: Pull complete
-18bdd1e546d2: Pull complete
-8198342c3e05: Pull complete
-f56970a44fd4: Pull complete
-Digest: sha256:f3a61450ae43896c4332bda5e78b453f4a93179045f20c8181043b26b5e79028
-Status: Downloaded newer image for ubuntu:latest
-```
+<pre><code class="lang-sh"> $ ssh 192.168.0.18
+ [node1] (<span class="hljs-built_in">local</span>) root@192.168.0.18 ~
+ $
+</code></pre>
+<pre><code class="lang-bash"> $ docker container run -it ubuntu top
+ Unable to find image <span class="hljs-string">&apos;ubuntu:latest&apos;</span> locally
+ latest: Pulling from library/ubuntu
+ aafe6b5e13de: Pull complete
+ 0a2b43a72660: Pull complete
+ 18bdd1e546d2: Pull complete
+ 8198342c3e05: Pull complete
+ f56970a44fd4: Pull complete
+ Digest: sha256:f3a61450ae43896c4332bda5e78b453f4a93179045f20c8181043b26b5e79028
+ Status: Downloaded newer image <span class="hljs-keyword">for</span> ubuntu:latest
+</code></pre>
+<p> The <code>docker run</code> command will result first in a <code>docker pull</code> to download the ubuntu image onto your host. Once it is downloaded, it will start the container. The output for the running container should look like this:</p>
+<pre><code class="lang-bash"> top - 20:32:46 up 3 days, 17:40,  0 users,  load average: 0.00, 0.01, 0.00
+ Tasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
+ %Cpu(s):  0.0 us,  0.1 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+ KiB Mem :  2046768 total,   173308 free,   117248 used,  1756212 buff/cache
+ KiB Swap:  1048572 total,  1048572 free,        0 used.  1548356 avail Mem
 
-The `docker run` command will result first in a `docker pull` to download the ubuntu image onto your host. Once it is downloaded, it will start the container. The output for the running container should look like this:
-
-```bash
-top - 20:32:46 up 3 days, 17:40,  0 users,  load average: 0.00, 0.01, 0.00
-Tasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
-%Cpu(s):  0.0 us,  0.1 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
-KiB Mem :  2046768 total,   173308 free,   117248 used,  1756212 buff/cache
-KiB Swap:  1048572 total,  1048572 free,        0 used.  1548356 avail Mem
-
-PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
-    1 root      20   0   36636   3072   2640 R   0.3  0.2   0:00.04 top
-```
-
-`top` is a linux utility that prints the processes on a system and orders them by resource consumption. Notice that there is only a single process in this output: it is the `top` process itself. We don&apos;t see other processes from our host in this list because of the PID namespace isolation.
-
-Containers use linux namespaces to provide isolation of system resources from other containers or the host. The PID namespace provides isolation for process IDs. If you run `top` while inside the container, you will notice that it shows the processes within the PID namespace of the container, which is much different than what you can see if you ran `top` on the host.
-
-Even though we are using the `ubuntu` image, it is important to note that our container does not have its own kernel. Its uses the kernel of the host and the `ubuntu` image is used only to provide the file system and tools available on an ubuntu system.
-</code></pre><ol>
+ PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+     1 root      20   0   36636   3072   2640 R   0.3  0.2   0:00.04 top
+</code></pre>
+<p> <code>top</code> is a linux utility that prints the processes on a system and orders them by resource consumption. Notice that there is only a single process in this output: it is the <code>top</code> process itself. We don&apos;t see other processes from our host in this list because of the PID namespace isolation.</p>
+<p> Containers use linux namespaces to provide isolation of system resources from other containers or the host. The PID namespace provides isolation for process IDs. If you run <code>top</code> while inside the container, you will notice that it shows the processes within the PID namespace of the container, which is much different than what you can see if you ran <code>top</code> on the host.</p>
+<p> Even though we are using the <code>ubuntu</code> image, it is important to note that our container does not have its own kernel. Its uses the kernel of the host and the <code>ubuntu</code> image is used only to provide the file system and tools available on an ubuntu system.</p>
+</li>
 <li><p>Inspect the container with <code>docker container exec</code></p>
 <p> The <code>docker container exec</code> command is a way to &quot;enter&quot; a running container&apos;s namespaces with a new process.</p>
 <p> This additional step is for <strong>Play with Docker</strong> environment.  Skip if using local docker installation:</p>
@@ -638,7 +628,7 @@ Even though we are using the `ubuntu` image, it is important to note that our co
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Run your first container","level":"1.3.1","depth":2,"next":{"title":"Run Multiple Containers","level":"1.3.2","depth":2,"path":"lab1/step2.md","ref":"lab1/step2.md","articles":[]},"previous":{"title":"Lab 1: Run your first container","level":"1.3","depth":1,"path":"lab1/lab1.md","ref":"lab1/lab1.md","articles":[{"title":"Run your first container","level":"1.3.1","depth":2,"path":"lab1/step1.md","ref":"lab1/step1.md","articles":[]},{"title":"Run Multiple Containers","level":"1.3.2","depth":2,"path":"lab1/step2.md","ref":"lab1/step2.md","articles":[]},{"title":"Clean Up","level":"1.3.3","depth":2,"path":"lab1/step3.md","ref":"lab1/step3.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab1/step1.md","mtime":"2020-08-03T04:12:25.603Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-11T03:13:38.427Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Run your first container","level":"1.3.1","depth":2,"next":{"title":"Run Multiple Containers","level":"1.3.2","depth":2,"path":"lab1/step2.md","ref":"lab1/step2.md","articles":[]},"previous":{"title":"Lab 1: Run your first container","level":"1.3","depth":1,"path":"lab1/lab1.md","ref":"lab1/lab1.md","articles":[{"title":"Run your first container","level":"1.3.1","depth":2,"path":"lab1/step1.md","ref":"lab1/step1.md","articles":[]},{"title":"Run Multiple Containers","level":"1.3.2","depth":2,"path":"lab1/step2.md","ref":"lab1/step2.md","articles":[]},{"title":"Clean Up","level":"1.3.3","depth":2,"path":"lab1/step3.md","ref":"lab1/step3.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["custom-favicon"],"pluginsConfig":{"favicon":"/images/favicon.ico","custom-favicon":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lab1/step1.md","mtime":"2020-08-11T10:13:44.993Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-11T10:13:50.215Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
